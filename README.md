@@ -40,6 +40,8 @@ python3 -m http.server 8000
 
 Abra `http://localhost:8000`. Não há build nem dependências; as fontes vêm do Google Fonts.
 
+Ao mudar CSS ou JS, aumente o `?v=` nas quatro páginas e a constante `V` em `sw.js`. Assim o celular nunca junta HTML novo com estilo antigo guardado em cache.
+
 ## Estrutura
 
 ```
