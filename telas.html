@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OncoLink · Telas do app</title>
 <meta name="description" content="Todas as telas do app do paciente do OncoLink, lado a lado.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,6 +31,7 @@
   .cap p{font-size:12.5px;color:var(--muted);line-height:1.45}
   .cap a{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--blue);margin-top:6px}
   .foot{margin-top:48px;text-align:center}
+  .foot a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   @media (max-width:640px){.wrap{padding:20px 16px 40px}.intro h1{font-size:36px}.grid{--s:.72}}
 </style>
 </head>
@@ -48,7 +51,7 @@
     <p>Navegação pela barra inferior, com a <span class="lia-name">Lia</span> no centro. Cada tela abaixo é a própria interface, não uma imagem. Abra uma para interagir.</p>
   </section>
   <div class="grid" id="grid"></div>
-  <p class="proto-note foot">Protótipo. Pessoas, instituição e dados clínicos são fictícios.</p>
+  <p class="proto-note foot">Protótipo da <a href="https://neurodynamics.dev" target="_blank" rel="noopener">NeuroDynamics</a> para o MIT Hacking Medicine 2026 Brasil · <a href="mailto:marcondes@neurodynamics.dev">marcondes@neurodynamics.dev</a>. Pessoas, instituição e dados clínicos são fictícios.</p>
 </div>
 <script>
   const T = [
@@ -62,7 +65,10 @@
     ['perfil','Perfil','Foto, vínculo com a rede e equipe de cuidado.'],
     ['prontuario','Prontuário','Diagnóstico, alergias, medicações com adesão e histórico.'],
     ['caderno','Caderno','O que a paciente contou à Lia, com controle de compartilhamento.'],
-    ['conexoes','Conexões','Apple Saúde, Clue, Fitbit e outros, com permissões por tipo de dado.']
+    ['conexoes','Conexões','Apple Saúde, Clue, Fitbit e outros, com permissões por tipo de dado.'],
+    ['notificacoes','Notificações','Push com o app salvo na tela inicial: ativar, testar e escolher o que receber.'],
+    ['privacidade','Privacidade','LGPD: consentimentos, cópia dos dados e quem acessou.'],
+    ['excluir','Excluir dados','Pedido de exclusão, com o que a lei obriga a rede a guardar.']
   ];
   document.getElementById('grid').innerHTML = T.map(([k, n, d], i) => `
     <figure class="shot" style="margin:0">

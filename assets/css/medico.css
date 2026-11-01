@@ -60,7 +60,7 @@ body.md{background:var(--bg);min-height:100vh}
 .seg.sm button{height:22px;padding:0 8px;font-size:11.5px}
 
 /* cabeçalho da paciente */
-.pt{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:24px;padding:18px 20px;
+.pt{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:24px;padding:18px 20px;margin-bottom:16px;
   background:linear-gradient(180deg,#FFFFFF 0%,#FBFBFF 100%)}
 .pt-id{display:flex;gap:16px;align-items:center;min-width:0}
 .pt-photo{width:68px;height:68px;border-radius:20px;flex:none;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--line)}
@@ -83,8 +83,7 @@ body.md{background:var(--bg);min-height:100vh}
 .ring span b{font-size:17px;color:var(--ink);display:inline;margin:0}
 .pt-act{display:flex;gap:8px}
 
-/* lentes (GitLens) */
-.lenses{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+/* lente (leitura da Lia no gráfico de marcadores) */
 .lens{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:5px 12px;border-radius:9px;
   font-family:var(--fm);font-size:11.5px;color:var(--muted);background:var(--violet-50);border:1px solid #E7E0FD}
 .lens .i{color:var(--violet)}
@@ -139,10 +138,6 @@ body.md{background:var(--bg);min-height:100vh}
 .body-list small{display:block;font-size:11.5px;color:var(--muted);line-height:1.35}
 
 /* marcadores */
-.mk-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.mk-tabs button{height:28px;padding:0 11px;border-radius:999px;border:1px solid var(--line);font-size:12px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:6px;background:var(--surface)}
-.mk-tabs button i{width:7px;height:7px;border-radius:50%;background:var(--c)}
-.mk-tabs button.on{border-color:transparent;background:var(--ink);color:#fff}
 .mk-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .mk-head b{font-size:26px;font-weight:600;letter-spacing:-.02em}
 .mk-head .u{font-size:12px;color:var(--muted)}
@@ -151,7 +146,7 @@ body.md{background:var(--bg);min-height:100vh}
 .mk-head .d.up{color:var(--ok)}
 .mk-head .ref{margin-left:auto;font-size:11.5px;color:var(--dim)}
 .mk-chart{margin-top:6px}
-.mk-chart svg{width:100%;height:190px}
+.mk-chart svg{width:100%;height:236px}
 .mk-chart .grid line{stroke:var(--line);stroke-dasharray:2 3}
 .mk-chart .axis text{font-size:10.5px;fill:var(--dim);font-family:var(--fm)}
 .mk-chart .band{fill:var(--ok);opacity:.07}
@@ -159,8 +154,7 @@ body.md{background:var(--bg);min-height:100vh}
 
 /* apple watch */
 .svc{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;color:#fff}
-.svc.watch{background:linear-gradient(135deg,#1C2340,#3A4170)}
-.svc.clue{background:linear-gradient(135deg,#E85F7F,#B4559B)}
+img.svc{display:block}
 .watch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .metric{padding:12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);min-width:0;display:flex;flex-direction:column}
 .metric small{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -360,6 +354,7 @@ body.md{background:var(--bg);min-height:100vh}
 
 /* últimos resultados */
 .mk-table{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:12px}
+.mk-table button{cursor:pointer}
 .mk-table button{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);text-align:left;min-width:0}
 .mk-table button.on{border-color:var(--c);background:#fff;box-shadow:0 0 0 1px var(--c) inset}
 .mk-table i{width:7px;height:7px;border-radius:50%;background:var(--c);margin-bottom:3px}

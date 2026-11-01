@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OncoLink · Painel do médico</title>
 <meta name="description" content="Protótipo do painel clínico do OncoLink: jornada, sinais de wearables, marcadores, adesão e insights prontos para enviar.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -91,14 +93,6 @@
       </div>
     </section>
 
-    <!-- lentes do prontuário (estilo GitLens) -->
-    <section class="lenses" aria-label="Lentes do prontuário">
-      <div class="lens"><svg class="i xs"><use href="#i-journey"/></svg><span class="src">prontuário · 28/10</span><b>Faltam 5 sessões de paclitaxel</b><span class="sep">·</span>8ª de 12 em 04/11 · término previsto 02/12</div>
-      <div class="lens"><svg class="i xs"><use href="#i-heart"/></svg><span class="src">protocolo antraciclina</span><b>Ecocardiograma de controle vence em 6 dias</b><span class="sep">·</span>último 26/08 · FEVE 60%</div>
-      <div class="lens warn"><svg class="i xs"><use href="#i-clock"/></svg><span class="src">endocrinologia · 29/09/2025</span><b>US de tireoide atrasado 1 mês</b><span class="sep">·</span>sem responsável ativo desde a alta</div>
-      <div class="lens"><svg class="i xs"><use href="#i-sparkle"/></svg><span class="src">reprodução humana · 19/06</span><b>14 oócitos criopreservados</b><span class="sep">·</span>retorno em 12/11</div>
-    </section>
-
     <div class="layout">
       <div class="col-main">
 
@@ -134,7 +128,6 @@
             <header class="w-h">
               <div class="w-t"><svg class="i"><use href="#i-chart"/></svg><h3>Marcadores</h3><span class="w-src">laboratório Meridiano</span></div>
             </header>
-            <div class="mk-tabs" id="mktabs" role="tablist"></div>
             <div class="mk-head" id="mkhead"></div>
             <div class="mk-chart" id="mkchart"></div>
             <div class="lens inline" id="mklens"></div>
@@ -146,7 +139,7 @@
           <!-- apple watch -->
           <section class="card w-watch">
             <header class="w-h">
-              <div class="w-t"><span class="svc watch"><svg class="i sm"><use href="#i-watch"/></svg></span><h3>Apple Watch</h3><span class="w-src">via Apple Saúde · sincronizado há 12 min</span></div>
+              <div class="w-t"><img class="svc" src="assets/img/marcas/apple.svg" alt=""><h3>Apple Watch</h3><span class="w-src">via Apple Saúde · sincronizado há 12 min</span></div>
               <div class="w-a"><span class="tag gray"><svg class="i xs"><use href="#i-lock"/></svg>Dados agregados</span></div>
             </header>
             <div class="watch-grid">
@@ -177,7 +170,7 @@
           <!-- clue -->
           <section class="card w-clue">
             <header class="w-h">
-              <div class="w-t"><span class="svc clue"><svg class="i sm"><use href="#i-cycle"/></svg></span><h3>Clue</h3><span class="w-src">ciclo e sintomas</span></div>
+              <div class="w-t"><img class="svc" src="assets/img/marcas/clue.svg" alt=""><h3>Clue</h3><span class="w-src">ciclo e sintomas</span></div>
             </header>
             <div class="clue-body">
               <div class="clue-ring" id="cluering"></div>

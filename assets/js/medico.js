@@ -244,17 +244,12 @@
 
   /* ---------- marcadores ---------- */
   let mkSel = 'amh';
-  function drawMarkerTabs(){
-    $('#mktabs').innerHTML = Object.entries(OL.marcadores).map(([k, m]) =>
-      `<button role="tab" aria-selected="${k===mkSel}" class="${k===mkSel?'on':''}" data-k="${k}" style="--c:${m.cor}"><i></i>${m.nome}</button>`).join('');
-    $$('#mktabs button').forEach(b => b.addEventListener('click', () => { mkSel = b.dataset.k; drawMarkerTabs(); drawMarker(); }));
-  }
   function drawMarker(){
     const m = OL.marcadores[mkSel], pts = m.pts;
     const first = pts[0][1], last = pts[pts.length - 1][1];
     const pct = Math.round((last - first) / first * 100);
     $('#mkhead').innerHTML = `<b class="num">${OL.nf(last, m.dec)}</b><span class="u">${m.un} · ${OL.fmt(pts[pts.length-1][0])}</span>
-      <span class="d ${pct < 0 ? 'down' : 'up'} num">${pct > 0 ? '+' : ''}${pct}% desde ${OL.fmt(pts[0][0])}</span>
+      <span class="d ${last < m.ref[0] || last > m.ref[1] ? 'down' : 'up'} num">${pct > 0 ? '+' : ''}${pct}% desde ${OL.fmt(pts[0][0])}</span>
       <span class="ref num">referência ${OL.nf(m.ref[0], m.dec)}–${OL.nf(m.ref[1], m.dec)} ${m.un}</span>`;
     $('#mklens').innerHTML = `${ic('sparkle','xs')}<span class="src">lia · leitura</span><b>${m.nota}</b>`;
 
@@ -264,9 +259,9 @@
       const arrow = v > v0 ? '↑' : v < v0 ? '↓' : '=';
       return `<button class="${k===mkSel?'on':''}" data-k="${k}" style="--c:${mm.cor}"><i></i><span>${mm.nome}</span><b class="num">${OL.nf(v, mm.dec)}</b><em class="${out?'out':''}">${arrow} ${out ? 'fora da ref.' : 'na ref.'}</em></button>`;
     }).join('');
-    $$('#mktable button').forEach(b => b.addEventListener('click', () => { mkSel = b.dataset.k; drawMarkerTabs(); drawMarker(); }));
+    $$('#mktable button').forEach(b => b.addEventListener('click', () => { mkSel = b.dataset.k; drawMarker(); }));
     const host = $('#mkchart'); host.innerHTML = '';
-    const W = Math.max(320, host.clientWidth), H = 190, L = 44, R = 14, TP = 12, B = 24;
+    const W = Math.max(320, host.clientWidth), H = 236, L = 44, R = 14, TP = 12, B = 24;
     const a = OL.dt('2026-05-20'), b = OL.dt('2026-11-05');
     const vals = pts.map(p => p[1]).concat(m.ref);
     let lo = Math.min(...vals), hi = Math.max(...vals);
@@ -419,7 +414,7 @@
     jMode === 'g' ? drawJourney() : drawJourneyList();
     drawMarker();
   }
-  legend(); drawBody(); drawMarkerTabs(); drawAll();
+  legend(); drawBody(); drawAll();
   spark('#sp-passos', OL.passos, { bars:true });
   spark('#sp-sono', OL.sono, { color:'#8B6CF6' });
   spark('#sp-fc', OL.fcRepouso, { color:'#DD3F57' });

@@ -6,7 +6,14 @@
 <meta name="theme-color" content="#F5F6FB">
 <title>OncoLink · App do paciente</title>
 <meta name="description" content="Protótipo do app do paciente do OncoLink: jornada, chat com a Lia, agenda, exames, prontuário, caderno e conexões.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OncoLink">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +35,7 @@
       <a href="telas.html"><svg class="i sm"><use href="#i-grid"/></svg>Todas as telas lado a lado</a>
       <a href="medico.html"><svg class="i sm"><use href="#i-stetho"/></svg>Painel do médico</a>
     </div>
-    <p class="proto-note">Protótipo. Pessoas, instituição e dados clínicos são fictícios.</p>
+    <p class="proto-note">Protótipo da <a href="https://neurodynamics.dev" target="_blank" rel="noopener">NeuroDynamics</a> para o MIT Hacking Medicine 2026 Brasil. Pessoas, instituição e dados clínicos são fictícios.</p>
   </aside>
 
   <!-- celular -->
@@ -55,7 +62,7 @@
                 <h1 class="serif">Bom dia, Marina</h1>
               </div>
               <div class="hd-r">
-                <button class="ib" aria-label="Notificações"><svg class="i"><use href="#i-bell"/></svg><i class="badge"></i></button>
+                <button class="ib" data-go="notificacoes" aria-label="Notificações"><svg class="i"><use href="#i-bell"/></svg><i class="badge"></i></button>
                 <button class="me-btn" data-go="perfil" aria-label="Perfil"><img src="assets/img/marina.svg" alt=""></button>
               </div>
             </header>
@@ -110,7 +117,7 @@
             <p class="fine"><svg class="i xs"><use href="#i-lock"/></svg>Do Apple Watch e do Clue. Sua equipe vê só resumos.</p>
 
             <button class="connect" data-go="conexoes">
-              <span class="cn-ics"><span style="background:#00B0B9"><svg class="i xs"><use href="#i-pulse"/></svg></span><span style="background:#34A853"><svg class="i xs"><use href="#i-heart"/></svg></span><span style="background:#1C2340"><svg class="i xs"><use href="#i-watch"/></svg></span></span>
+              <span class="cn-ics"><img src="assets/img/marcas/fitbit.svg" alt=""><img src="assets/img/marcas/health-connect.svg" alt=""><img src="assets/img/marcas/garmin.svg" alt=""></span>
               <span><b>Conecte mais dados</b><small>Fitbit, Health Connect, Garmin e medidores</small></span>
               <svg class="i sm"><use href="#i-right"/></svg>
             </button>
@@ -353,9 +360,14 @@
             </ul>
             <h3 class="grp">Conta</h3>
             <ul class="menu">
-              <li><button><span class="mi g"><svg class="i sm"><use href="#i-shield"/></svg></span><span><b>Privacidade e compartilhamento</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
-              <li><button><span class="mi g"><svg class="i sm"><use href="#i-bell"/></svg></span><span><b>Notificações e lembretes</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="notificacoes"><span class="mi g"><svg class="i sm"><use href="#i-bell"/></svg></span><span><b>Notificações</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="privacidade"><span class="mi g"><svg class="i sm"><use href="#i-shield"/></svg></span><span><b>Privacidade e LGPD</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
             </ul>
+            <footer class="about">
+              <img src="assets/img/neurodynamics.png" alt="NeuroDynamics" width="36" height="36">
+              <p>Protótipo da <a href="https://neurodynamics.dev" target="_blank" rel="noopener">NeuroDynamics</a> para o MIT Hacking Medicine 2026 Brasil.</p>
+              <a class="about-mail" href="mailto:marcondes@neurodynamics.dev"><svg class="i xs"><use href="#i-mail"/></svg>marcondes@neurodynamics.dev</a>
+            </footer>
           </section>
 
           <!-- ============ PRONTUÁRIO ============ -->
@@ -416,7 +428,7 @@
             <h3 class="grp">Conectados</h3>
             <article class="svc-card open">
               <div class="svc-h">
-                <span class="svc-ic" style="background:linear-gradient(135deg,#FF5E7E,#FF2D55)"><svg class="i fill"><use href="#i-heart"/></svg></span>
+                <img class="svc-ic" src="assets/img/marcas/apple-saude.svg" alt="">
                 <span><b>Apple Saúde</b><small><i class="on-dot"></i>Sincronizado há 12 min</small></span>
                 <svg class="i sm ch"><use href="#i-up"/></svg>
               </div>
@@ -426,11 +438,11 @@
                 <li><span><svg class="i xs"><use href="#i-heart"/></svg>Frequência cardíaca</span><label class="sw"><input type="checkbox" checked><i></i></label></li>
                 <li><span><svg class="i xs"><use href="#i-scale"/></svg>Peso</span><label class="sw"><input type="checkbox"><i></i></label></li>
               </ul>
-              <p class="svc-note"><svg class="i xs"><use href="#i-watch"/></svg>Inclui os dados do seu Apple Watch</p>
+              <p class="svc-note"><img src="assets/img/marcas/apple.svg" alt="">Inclui os dados do seu Apple Watch</p>
             </article>
             <article class="svc-card">
               <div class="svc-h">
-                <span class="svc-ic" style="background:linear-gradient(135deg,#E85F7F,#B4559B)"><svg class="i"><use href="#i-cycle"/></svg></span>
+                <img class="svc-ic" src="assets/img/marcas/clue.svg" alt="">
                 <span><b>Clue</b><small><i class="on-dot"></i>Ciclo e sintomas · hoje, 07:30</small></span>
                 <svg class="i sm ch"><use href="#i-down"/></svg>
               </div>
@@ -438,13 +450,56 @@
 
             <h3 class="grp">Disponíveis</h3>
             <ul class="avail">
-              <li><span class="svc-ic" style="background:#00B0B9"><svg class="i"><use href="#i-pulse"/></svg></span><span><b>Fitbit</b><small>Atividade, sono e FC</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
-              <li><span class="svc-ic" style="background:#34A853"><svg class="i"><use href="#i-heart"/></svg></span><span><b>Health Connect</b><small>Android · dados do celular</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
-              <li><span class="svc-ic" style="background:#111"><svg class="i"><use href="#i-nav"/></svg></span><span><b>Garmin Connect</b><small>Treinos e recuperação</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><img class="svc-ic" src="assets/img/marcas/fitbit.svg" alt=""><span><b>Fitbit</b><small>Atividade, sono e FC</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><img class="svc-ic" src="assets/img/marcas/health-connect.svg" alt=""><span><b>Health Connect</b><small>Android · dados do celular</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><img class="svc-ic" src="assets/img/marcas/garmin.svg" alt=""><span><b>Garmin Connect</b><small>Treinos e recuperação</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
               <li><span class="svc-ic" style="background:#5A4ED4"><svg class="i"><use href="#i-gauge"/></svg></span><span><b>Medidor de pressão</b><small>Bluetooth</small></span><button class="btn soft sm" data-connect>Parear</button></li>
               <li><span class="svc-ic" style="background:#3456E3"><svg class="i"><use href="#i-scale"/></svg></span><span><b>Balança inteligente</b><small>Bluetooth</small></span><button class="btn soft sm" data-connect>Parear</button></li>
             </ul>
-            <div class="privacy"><svg class="i"><use href="#i-shield"/></svg><p><b>Seus dados, suas regras.</b> Você pode desconectar quando quiser. A Meridiano só usa esses dados para o seu cuidado.</p></div>
+            <button class="privacy" data-go="privacidade"><svg class="i"><use href="#i-shield"/></svg><p><b>Seus dados, suas regras.</b> Você pode desconectar quando quiser. A Meridiano só usa esses dados para o seu cuidado.</p><svg class="i sm ch"><use href="#i-right"/></svg></button>
+          </section>
+
+          <!-- ============ NOTIFICAÇÕES ============ -->
+          <section class="scr" data-s="notificacoes">
+            <header class="hd sub"><button class="back" data-go="perfil"><svg class="i"><use href="#i-left"/></svg>Perfil</button></header>
+            <h1 class="serif page-t">Notificações</h1>
+            <p class="lead">A Lia avisa sobre exames, consultas e quando quer saber como você está.</p>
+            <article class="card push-card" id="pushCard"></article>
+            <h3 class="grp">Recentes</h3>
+            <ul class="inbox">
+              <li data-go="lia"><span class="lia-orb still" style="--s:30px"></span><div><b>Lia</b><p>Faz uma semana que você falou do formigamento. Como está hoje?</p></div><time>09:10</time></li>
+              <li data-go="exames"><span class="ib-ic"><svg class="i sm"><use href="#i-drop"/></svg></span><div><b>Hemograma antes da sessão</b><p>Faça até terça, 03/11.</p></div><time>ontem</time></li>
+              <li data-go="agenda"><span class="ib-ic"><svg class="i sm"><use href="#i-calendar"/></svg></span><div><b>Sessão 8 confirmada</b><p>Quarta, 04/11, às 08:00.</p></div><time>qui</time></li>
+            </ul>
+            <h3 class="grp">O que receber</h3>
+            <ul class="toggles">
+              <li><span>Mensagens da Lia</span><label class="sw"><input type="checkbox" data-pref="lia" checked><i></i></label></li>
+              <li><span>Exames e resultados</span><label class="sw"><input type="checkbox" data-pref="exames" checked><i></i></label></li>
+              <li><span>Consultas e sessões</span><label class="sw"><input type="checkbox" data-pref="consultas" checked><i></i></label></li>
+              <li><span>Medicações</span><label class="sw"><input type="checkbox" data-pref="meds" checked><i></i></label></li>
+              <li><span>Silenciar das 22h às 7h</span><label class="sw"><input type="checkbox" data-pref="silencio" checked><i></i></label></li>
+            </ul>
+          </section>
+
+          <!-- ============ PRIVACIDADE (LGPD) ============ -->
+          <section class="scr" data-s="privacidade">
+            <header class="hd sub"><button class="back" data-go="perfil"><svg class="i"><use href="#i-left"/></svg>Perfil</button></header>
+            <h1 class="serif page-t">Privacidade</h1>
+            <p class="lead">Seus dados de saúde são dados sensíveis pela LGPD. Você decide o que é compartilhado e pode pedir a exclusão quando quiser.</p>
+            <h3 class="grp">Consentimentos</h3>
+            <ul class="toggles">
+              <li><span><b>Equipe da Meridiano Saúde</b><small>Necessário para a Lia acompanhar seu cuidado</small></span><label class="sw"><input type="checkbox" checked data-cons="equipe"><i></i></label></li>
+              <li><span><b>Apps e dispositivos</b><small>Resumos do Apple Saúde e do Clue</small></span><label class="sw"><input type="checkbox" checked data-cons="apps"><i></i></label></li>
+              <li><span><b>Pesquisa anonimizada</b><small>Ajuda a rede a melhorar o rastreio</small></span><label class="sw"><input type="checkbox" data-cons="pesquisa"><i></i></label></li>
+            </ul>
+            <h3 class="grp">Seus direitos</h3>
+            <ul class="menu">
+              <li><button id="btnBaixar"><span class="mi b"><svg class="i sm"><use href="#i-download"/></svg></span><span><b>Baixar meus dados</b><small>Cópia em arquivo, para guardar ou levar a outro serviço</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="caderno"><span class="mi b"><svg class="i sm"><use href="#i-edit"/></svg></span><span><b>Corrigir informações</b><small>Edite o que você contou à Lia</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button id="btnAcessos"><span class="mi b"><svg class="i sm"><use href="#i-eye"/></svg></span><span><b>Quem acessou meus dados</b><small>Equipe e serviços nos últimos 30 dias</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+            </ul>
+            <button class="del-row" data-open="excluir"><svg class="i sm"><use href="#i-trash"/></svg><span><b>Solicitar exclusão dos dados</b><small>Apaga o que você registrou no app</small></span><svg class="i sm"><use href="#i-right"/></svg></button>
+            <p class="fine">Encarregado de dados (DPO) da Meridiano Saúde · resposta em até 15 dias.</p>
           </section>
         </div>
 
@@ -520,12 +575,46 @@
           </div>
         </div>
 
+        <!-- ============ EXCLUIR DADOS (pop-up) ============ -->
+        <div class="sheet-bg" data-sheet="excluir" hidden>
+          <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="exT">
+            <span class="grab"></span>
+            <button class="ib close" data-close aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button>
+            <div class="ex-step" data-step="1">
+              <small class="sh-k bad-k">LGPD · art. 18</small>
+              <h2 class="serif" id="exT">Excluir meus dados</h2>
+              <p class="lead">Escolha o que apagar. O pedido vai para o encarregado de dados da Meridiano Saúde.</p>
+              <div class="locs" id="exScope">
+                <label class="loc"><input type="radio" name="ex" value="tudo" checked><span class="loc-b"><b>Tudo o que registrei no app</b><small>Caderno, conversas, checkups e conexões</small></span></label>
+                <label class="loc"><input type="radio" name="ex" value="apps"><span class="loc-b"><b>Só dados de apps e dispositivos</b><small>Apple Saúde, Apple Watch e Clue</small></span></label>
+                <label class="loc"><input type="radio" name="ex" value="chat"><span class="loc-b"><b>Só conversas e caderno</b><small>O que você contou à Lia</small></span></label>
+              </div>
+              <div class="keep"><svg class="i sm"><use href="#i-info"/></svg><p>O prontuário e os exames da rede continuam guardados por 20 anos, como exige a Lei 13.787/2018.</p></div>
+              <label class="ack"><input type="checkbox" id="exAck"><span>Entendo que a Lia deixa de acompanhar o que for excluído.</span></label>
+              <button class="btn block lg danger" id="exOk" disabled>Solicitar exclusão</button>
+            </div>
+            <div class="ex-step done" data-step="2" hidden>
+              <div class="ok-orb plain"><svg class="i lg"><use href="#i-check"/></svg></div>
+              <h2 class="serif">Pedido registrado</h2>
+              <p class="lead c">Protocolo <b class="num" id="exProt"></b><br>Você recebe a confirmação em até 15 dias, aqui e por e-mail.</p>
+              <button class="btn ghost block" data-close>Fechar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- notificação push (demonstração dentro da moldura) -->
+        <button class="pushb" id="pushb" data-go="lia" hidden>
+          <img src="assets/img/icone-192.png" alt="">
+          <span><small>OncoLink<em>agora</em></small><b>Lia</b><span>Faz uma semana que você falou do formigamento. Como está hoje?</span></span>
+        </button>
+
         <div class="ptoast" id="ptoast" role="status" aria-live="polite"></div>
       </div>
     </div>
   </div>
 </div>
 
+<script src="assets/js/push-config.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
