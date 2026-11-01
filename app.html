@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F5F6FB">
+<title>OncoLink · App do paciente</title>
+<meta name="description" content="Protótipo do app do paciente do OncoLink: jornada, chat com a Lia, agenda, exames, prontuário, caderno e conexões.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="pa">
+<script src="assets/js/icons.js"></script>
+
+<div class="stage">
+  <!-- painel lateral (desktop) -->
+  <aside class="side">
+    <a class="brand" href="index.html"><svg class="brand-mark"><use href="#oncolink-mark"/></svg><b>Onco<span>Link</span></b></a>
+    <p class="side-kicker">App do paciente</p>
+    <h1 class="serif side-title" id="sideTitle">Início</h1>
+    <p class="side-desc" id="sideDesc"></p>
+    <nav class="side-nav" id="sideNav" aria-label="Telas do protótipo"></nav>
+    <div class="side-links">
+      <a href="telas.html"><svg class="i sm"><use href="#i-grid"/></svg>Todas as telas lado a lado</a>
+      <a href="medico.html"><svg class="i sm"><use href="#i-stetho"/></svg>Painel do médico</a>
+    </div>
+    <p class="proto-note">Protótipo. Pessoas, instituição e dados clínicos são fictícios.</p>
+  </aside>
+
+  <!-- celular -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen" id="screen">
+        <div class="status" aria-hidden="true">
+          <span class="num">9:41</span>
+          <span class="island"></span>
+          <span class="sig">
+            <svg viewBox="0 0 18 12" width="18" height="12"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg>
+            <svg viewBox="0 0 16 12" width="16" height="12"><path d="M8 2.2c2.4 0 4.6.9 6.2 2.5l1.2-1.2A10.4 10.4 0 0 0 8 .5 10.4 10.4 0 0 0 .6 3.5l1.2 1.2A8.7 8.7 0 0 1 8 2.2zm0 3.4c1.5 0 2.8.6 3.8 1.5L13 5.9A7 7 0 0 0 8 3.9a7 7 0 0 0-5 2l1.2 1.2c1-.9 2.3-1.5 3.8-1.5zm0 3.4c.6 0 1.1.2 1.5.6L8 11.1 6.5 9.6c.4-.4.9-.6 1.5-.6z"/></svg>
+            <svg viewBox="0 0 27 12" width="27" height="12"><rect x=".5" y=".5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2"/><path d="M25 4v4c.8-.3 1.3-1.1 1.3-2S25.8 4.3 25 4z" opacity=".5"/></svg>
+          </span>
+        </div>
+
+        <div class="views">
+
+          <!-- ============ INÍCIO ============ -->
+          <section class="scr" data-s="inicio">
+            <header class="hd">
+              <div>
+                <small class="hd-k">Sábado, 31 de outubro</small>
+                <h1 class="serif">Bom dia, Marina</h1>
+              </div>
+              <div class="hd-r">
+                <button class="ib" aria-label="Notificações"><svg class="i"><use href="#i-bell"/></svg><i class="badge"></i></button>
+                <button class="me-btn" data-go="perfil" aria-label="Perfil"><img src="assets/img/marina.svg" alt=""></button>
+              </div>
+            </header>
+
+            <button class="lia-card" data-open="checkup">
+              <span class="lia-orb" style="--s:44px"></span>
+              <span class="lc-tx"><small>Checkup de hoje</small><b>Como você está se sentindo?</b><span>Leva 30 segundos. A Lia guarda para sua equipe.</span></span>
+              <svg class="i"><use href="#i-right"/></svg>
+            </button>
+
+            <article class="card nextc">
+              <div class="nc-top"><span class="tag blue">Próxima etapa</span><span class="nc-when">em 4 dias</span></div>
+              <h3>Sessão 8 de 12 · Paclitaxel</h3>
+              <p class="nc-meta"><svg class="i xs"><use href="#i-calendar"/></svg>Quarta, 04 de novembro · 08:00</p>
+              <p class="nc-meta"><svg class="i xs"><use href="#i-pin"/></svg>Unidade Paulista · Infusão, 4º andar</p>
+              <div class="prog" style="--p:58.3"><i></i></div>
+              <div class="prog-l num"><span>7 sessões feitas</span><span><b>faltam 5</b></span></div>
+              <div class="nc-btns">
+                <button class="btn ghost sm"><svg class="i xs"><use href="#i-nav"/></svg>Como chegar</button>
+                <button class="btn soft sm"><svg class="i xs"><use href="#i-file"/></svg>Preparos</button>
+              </div>
+            </article>
+
+            <div class="sec-h"><h2>A <span class="lia-name">Lia</span> lembrou</h2><span class="cnt num">2</span></div>
+            <div class="hscroll">
+              <article class="rem warn">
+                <span class="rem-ic"><svg class="i"><use href="#i-clock"/></svg></span>
+                <b>Ultrassom de tireoide</b>
+                <p>Está 1 mês atrasado. Sua endocrinologista pediu um por ano.</p>
+                <button class="btn primary sm" data-open="agendar">Agendar perto de você</button>
+              </article>
+              <article class="rem">
+                <span class="rem-ic"><svg class="i"><use href="#i-drop"/></svg></span>
+                <b>Hemograma antes da sessão</b>
+                <p>Faça até terça, 03/11. Dá para coletar em casa.</p>
+                <button class="btn soft sm" data-go="exames">Ver opções</button>
+              </article>
+              <article class="rem">
+                <span class="rem-ic"><svg class="i"><use href="#i-pill"/></svg></span>
+                <b>Omeprazol</b>
+                <p>Você esqueceu 2 doses esta semana. Quer um alarme às 7h?</p>
+                <button class="btn soft sm">Criar alarme</button>
+              </article>
+            </div>
+
+            <div class="sec-h"><h2>Sua semana</h2><button class="lnk" data-go="conexoes">Conexões<svg class="i xs"><use href="#i-right"/></svg></button></div>
+            <div class="wk">
+              <div class="wk-t"><span class="wk-ic b"><svg class="i sm"><use href="#i-steps"/></svg></span><b class="num">6.240</b><small>passos por dia</small></div>
+              <div class="wk-t"><span class="wk-ic v"><svg class="i sm"><use href="#i-moon"/></svg></span><b class="num">6h12</b><small>de sono</small></div>
+              <div class="wk-t"><span class="wk-ic p"><svg class="i sm"><use href="#i-flame"/></svg></span><b class="num">3×</b><small>exercícios</small></div>
+            </div>
+            <p class="fine"><svg class="i xs"><use href="#i-lock"/></svg>Do Apple Watch e do Clue. Sua equipe vê só resumos.</p>
+
+            <button class="connect" data-go="conexoes">
+              <span class="cn-ics"><span style="background:#00B0B9"><svg class="i xs"><use href="#i-pulse"/></svg></span><span style="background:#34A853"><svg class="i xs"><use href="#i-heart"/></svg></span><span style="background:#1C2340"><svg class="i xs"><use href="#i-watch"/></svg></span></span>
+              <span><b>Conecte mais dados</b><small>Fitbit, Health Connect, Garmin e medidores</small></span>
+              <svg class="i sm"><use href="#i-right"/></svg>
+            </button>
+          </section>
+
+          <!-- ============ JORNADA ============ -->
+          <section class="scr" data-s="jornada">
+            <header class="hd">
+              <div><small class="hd-k">Desde 2019</small><h1 class="serif">Sua jornada</h1></div>
+              <div class="hd-r"><button class="ib" aria-label="Compartilhar"><svg class="i"><use href="#i-share"/></svg></button></div>
+            </header>
+            <div class="seg wide" id="jseg"><button class="on" data-v="linha">Linha do tempo</button><button data-v="trat">Tratamentos</button></div>
+
+            <div id="jv-linha">
+              <div class="lanes" id="lanes"></div>
+              <div class="jv" id="jv"></div>
+            </div>
+
+            <div id="jv-trat" hidden>
+              <h3 class="grp">Em andamento</h3>
+              <article class="tc">
+                <div class="tc-h"><span class="tc-dot" style="--c:#3456E3"></span><b>Paclitaxel semanal</b><span class="tag blue">Em andamento</span></div>
+                <p>Quimioterapia neoadjuvante · Câncer de mama</p>
+                <div class="prog" style="--p:58.3"><i></i></div>
+                <div class="prog-l num"><span>7 de 12 sessões · desde 09/09</span><span>fim previsto 02/12</span></div>
+                <div class="tc-ev"><span class="tag warn"><svg class="i xs"><use href="#i-pause"/></svg>1 interrupção</span><span class="tag warn"><svg class="i xs"><use href="#i-alert"/></svg>1 intercorrência</span></div>
+              </article>
+              <article class="tc">
+                <div class="tc-h"><span class="tc-dot" style="--c:#8B6CF6"></span><b>Gosserrelina mensal</b><span class="tag blue">Em andamento</span></div>
+                <p>Proteção dos ovários durante a quimioterapia · Fertilidade</p>
+                <div class="prog-l num"><span>5 aplicações · desde 02/07</span><span>próxima 26/11</span></div>
+              </article>
+              <article class="tc">
+                <div class="tc-h"><span class="tc-dot" style="--c:#1F9BB8"></span><b>Acompanhamento da tireoide</b><span class="tag warn">Exame atrasado</span></div>
+                <p>Ultrassom anual · sem médico responsável desde a alta</p>
+              </article>
+              <h3 class="grp">Encerrados</h3>
+              <article class="tc done">
+                <div class="tc-h"><span class="tc-dot" style="--c:#3456E3"></span><b>AC dose densa</b><span class="tag ok">Concluído</span></div>
+                <p>4 de 4 ciclos · 01/07 a 19/08/2026</p>
+                <div class="tc-ev"><span class="tag bad"><svg class="i xs"><use href="#i-bed"/></svg>1 internação · 3 dias</span><span class="tag ok"><svg class="i xs"><use href="#i-checkc"/></svg>Alta em 27/07</span></div>
+              </article>
+              <article class="tc done">
+                <div class="tc-h"><span class="tc-dot" style="--c:#8B6CF6"></span><b>Preservação da fertilidade</b><span class="tag ok">Concluído</span></div>
+                <p>14 óvulos congelados · 19/06/2026</p>
+              </article>
+              <article class="tc done">
+                <div class="tc-h"><span class="tc-dot" style="--c:#C77DDB"></span><b>Septoplastia</b><span class="tag ok">Alta</span></div>
+                <p>Cirurgia de desvio de septo · mai/2019</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- ============ LIA ============ -->
+          <section class="scr chat-scr" data-s="lia">
+            <header class="lia-hd">
+              <span class="lia-orb" style="--s:38px"></span>
+              <div><b class="lia-name">Lia</b><small><i class="online"></i>Assistente de cuidado da Meridiano</small></div>
+              <button class="ib" aria-label="Mais opções"><svg class="i"><use href="#i-more"/></svg></button>
+            </header>
+            <div class="chat" id="chat">
+              <div class="day">Sáb, 24 out</div>
+              <div class="m me voice">
+                <div class="vb"><span class="play"><svg class="i xs fill"><use href="#i-play"/></svg></span><span class="wave" data-n="26"></span><span class="num dur">0:12</span></div>
+                <p class="tr">“Tô sentindo um formigamento na ponta dos dedos, principalmente de manhã. Começou essa semana.”</p>
+                <time>19:02</time>
+              </div>
+              <div class="m lia">
+                <p>Obrigada por me contar, Marina. Formigamento pode ser um efeito do paclitaxel, e é importante que sua equipe saiba.</p>
+                <div class="rec"><span class="rec-ic"><svg class="i xs"><use href="#i-book"/></svg></span><div><b>Registrado no seu caderno</b><small>Formigamento nas pontas dos dedos · desde 19/10</small></div><span class="rec-sh"><svg class="i xs"><use href="#i-users"/></svg>Equipe</span></div>
+                <p>Vou avisar a Dra. Beatriz antes da próxima sessão e te pergunto de novo em alguns dias.</p>
+                <time>19:02</time>
+              </div>
+              <div class="day">Hoje</div>
+              <div class="m lia">
+                <p>Oi, Marina. Faz uma semana que você falou do formigamento nas mãos. Como está hoje?</p>
+                <div class="qr"><button>Melhorou</button><button class="picked">Está igual</button><button>Piorou</button></div>
+                <time>09:10</time>
+              </div>
+              <div class="m me">
+                <p>Igual. E às vezes derrubo coisas.</p>
+                <time>09:14 <svg class="i xs"><use href="#i-check"/></svg></time>
+              </div>
+              <div class="m lia">
+                <p>Entendi. Isso merece uma avaliação antes da sessão de quarta. A Dra. Beatriz tem horário na terça:</p>
+                <div class="slot" id="slot">
+                  <div class="sl-d num"><b>03</b>nov</div>
+                  <div class="sl-tx"><b>Terça · 10:20</b><small>Dra. Beatriz Kanno · Unidade Paulista · 2,1 km</small></div>
+                </div>
+                <div class="slot-btns"><button class="btn lia sm" id="slotOk">Agendar</button><button class="btn ghost sm" data-open="agendar">Outros horários</button></div>
+                <time>09:14</time>
+              </div>
+              <div class="safety"><svg class="i xs"><use href="#i-thermo"/></svg><span>Teve febre de 37,8 °C ou mais? Ligue para a <b>Central Oncológica 24h</b>: (11) 4002-8922.</span></div>
+            </div>
+            <div class="quick" id="quick" hidden>
+              <button data-q="sintoma"><svg class="i sm"><use href="#i-thermo"/></svg>Registrar sintoma</button>
+              <button data-q="exame"><svg class="i sm"><use href="#i-clip"/></svg>Enviar exame</button>
+              <button data-q="contar"><svg class="i sm"><use href="#i-book"/></svg>Contar algo sobre mim</button>
+            </div>
+            <div class="composer" id="composer">
+              <button class="ib plus" id="plusBtn" aria-label="Ações rápidas"><svg class="i"><use href="#i-plus"/></svg></button>
+              <label class="cmp-in">
+                <input id="msgIn" type="text" placeholder="Conte algo para a Lia…" autocomplete="off">
+              </label>
+              <button class="mic" id="micBtn" aria-label="Falar com a Lia"><svg class="i"><use href="#i-mic"/></svg></button>
+            </div>
+            <div class="rec-bar" id="recBar" hidden>
+              <span class="rec-dot"></span><span class="num" id="recT">0:00</span>
+              <span class="live-wave" id="liveWave"></span>
+              <button class="btn sm ghost" id="recCancel">Cancelar</button>
+              <button class="mic on" id="recStop" aria-label="Parar e enviar"><svg class="i"><use href="#i-send"/></svg></button>
+            </div>
+          </section>
+
+          <!-- ============ AGENDA ============ -->
+          <section class="scr" data-s="agenda">
+            <header class="hd">
+              <div><small class="hd-k">Novembro 2026</small><h1 class="serif">Agenda</h1></div>
+              <div class="hd-r"><button class="ib" data-open="agendar" aria-label="Novo agendamento"><svg class="i"><use href="#i-plus"/></svg></button></div>
+            </header>
+            <div class="seg wide"><button class="on">Agendamentos</button><button data-go="exames">Exames</button></div>
+            <div class="week" id="week"></div>
+
+            <h3 class="grp">Próximos</h3>
+            <article class="ap sug">
+              <div class="ap-d num"><small>ter</small><b>03</b></div>
+              <div class="ap-b">
+                <span class="tag violet"><svg class="i xs"><use href="#i-sparkle"/></svg>Sugerido pela Lia</span>
+                <b>Consulta · Dra. Beatriz Kanno</b>
+                <small><svg class="i xs"><use href="#i-clock"/></svg>10:20 · Oncologia clínica</small>
+                <small><svg class="i xs"><use href="#i-pin"/></svg>Unidade Paulista · 2,1 km</small>
+                <div class="ap-btns"><button class="btn primary sm">Confirmar</button><button class="btn ghost sm" data-open="agendar">Remarcar</button></div>
+              </div>
+            </article>
+            <article class="ap">
+              <div class="ap-d num"><small>qua</small><b>04</b></div>
+              <div class="ap-b">
+                <span class="tag blue">Sessão 8 de 12</span>
+                <b>Paclitaxel</b>
+                <small><svg class="i xs"><use href="#i-clock"/></svg>08:00 · cerca de 3 horas</small>
+                <small><svg class="i xs"><use href="#i-pin"/></svg>Unidade Paulista · Infusão, 4º andar</small>
+                <p class="ap-note">Leve um casaco e um lanche leve. Hemograma até terça.</p>
+              </div>
+            </article>
+            <article class="ap">
+              <div class="ap-d num"><small>sex</small><b>06</b></div>
+              <div class="ap-b">
+                <span class="tag gray"><svg class="i xs"><use href="#i-globe"/></svg>Teleconsulta</span>
+                <b>Nutrição oncológica</b>
+                <small><svg class="i xs"><use href="#i-clock"/></svg>15:00 · Camila Duarte</small>
+              </div>
+            </article>
+            <article class="ap">
+              <div class="ap-d num"><small>qui</small><b>12</b></div>
+              <div class="ap-b">
+                <span class="tag gray">Retorno</span>
+                <b>Reprodução humana</b>
+                <small><svg class="i xs"><use href="#i-clock"/></svg>09:30 · Dr. Rafael Couto</small>
+                <small><svg class="i xs"><use href="#i-pin"/></svg>Centro de Reprodução · Itaim · 5,4 km</small>
+              </div>
+            </article>
+            <h3 class="grp">Anteriores</h3>
+            <ul class="past">
+              <li><span class="num">28/10</span><b>Paclitaxel · sessão 7</b><svg class="i sm ok"><use href="#i-checkc"/></svg></li>
+              <li><span class="num">27/10</span><b>Hemograma</b><svg class="i sm ok"><use href="#i-checkc"/></svg></li>
+              <li><span class="num">21/10</span><b>Consulta · Dra. Beatriz</b><svg class="i sm ok"><use href="#i-checkc"/></svg></li>
+              <li><span class="num">06/10</span><b>Pronto atendimento · infecção urinária</b><svg class="i sm warn"><use href="#i-alert"/></svg></li>
+            </ul>
+          </section>
+
+          <!-- ============ EXAMES ============ -->
+          <section class="scr" data-s="exames">
+            <header class="hd sub">
+              <button class="back" data-go="agenda"><svg class="i"><use href="#i-left"/></svg>Agenda</button>
+            </header>
+            <h1 class="serif page-t">Exames</h1>
+            <div class="map card" id="map"></div>
+            <h3 class="grp">Próximos · perto de você</h3>
+            <article class="ex">
+              <span class="ex-n" style="--c:#3456E3">1</span>
+              <div class="ex-b">
+                <div class="ex-t"><b>Hemograma</b><span class="tag blue">Até ter, 03/11</span></div>
+                <small>Laboratório Meridiano · Vila Mariana · 1,2 km</small>
+                <small class="ok-tx"><svg class="i xs"><use href="#i-check"/></svg>Sem jejum · coleta em casa disponível</small>
+                <div class="ap-btns"><button class="btn primary sm" data-open="agendar">Agendar</button><button class="btn ghost sm">Coleta em casa</button></div>
+              </div>
+            </article>
+            <article class="ex">
+              <span class="ex-n" style="--c:#5A4ED4">2</span>
+              <div class="ex-b">
+                <div class="ex-t"><b>Ecocardiograma</b><span class="tag blue">Até 06/11</span></div>
+                <small>Unidade Paulista · Cardiologia, 2º andar · 2,1 km</small>
+                <small>Pedido pela Dra. Beatriz · controle do coração</small>
+              </div>
+            </article>
+            <article class="ex">
+              <span class="ex-n" style="--c:#D58A00">3</span>
+              <div class="ex-b">
+                <div class="ex-t"><b>Ultrassom de tireoide</b><span class="tag warn">Atrasado</span></div>
+                <small>Meridiano Diagnósticos · Moema · 3,4 km</small>
+                <small>Pedido anual da endocrinologia · último em 15/09/2025</small>
+                <div class="ap-btns"><button class="btn primary sm" data-open="agendar">Agendar</button></div>
+              </div>
+            </article>
+            <h3 class="grp">Recentes</h3>
+            <ul class="res">
+              <li><span class="res-ic ok"><svg class="i sm"><use href="#i-drop"/></svg></span><div><b>Hemograma</b><small>27/10 · Liberada para a sessão 7</small></div><button class="lnk">Laudo<svg class="i xs"><use href="#i-right"/></svg></button></li>
+              <li><span class="res-ic v"><svg class="i sm"><use href="#i-chart"/></svg></span><div><b>Hormônios e reserva ovariana</b><small>21/10 · Comente com o Dr. Rafael no dia 12</small></div><button class="lnk">Laudo<svg class="i xs"><use href="#i-right"/></svg></button></li>
+              <li><span class="res-ic ok"><svg class="i sm"><use href="#i-heart"/></svg></span><div><b>Ecocardiograma</b><small>26/08 · Dentro do esperado</small></div><button class="lnk">Laudo<svg class="i xs"><use href="#i-right"/></svg></button></li>
+              <li><span class="res-ic"><svg class="i sm"><use href="#i-file"/></svg></span><div><b>Biópsia de mama</b><small>20/05 · Discutido em consulta</small></div><button class="lnk">Laudo<svg class="i xs"><use href="#i-right"/></svg></button></li>
+            </ul>
+          </section>
+
+          <!-- ============ PERFIL ============ -->
+          <section class="scr" data-s="perfil">
+            <div class="pf-cover"></div>
+            <div class="pf">
+              <div class="pf-photo"><img src="assets/img/marina.svg" alt="Foto de Marina"><button aria-label="Trocar foto"><svg class="i xs"><use href="#i-edit"/></svg></button></div>
+              <h1 class="serif">Marina Albuquerque Teles</h1>
+              <p class="num">38 anos · prontuário 0048-2213</p>
+              <span class="chip"><svg class="i"><use href="#i-building"/></svg>Vinculada à Meridiano Saúde</span>
+            </div>
+            <div class="pf-stats">
+              <button data-go="conexoes"><b class="num">3</b><small>conexões</small></button>
+              <button data-go="caderno"><b class="num">42</b><small>no caderno</small></button>
+              <button data-go="jornada"><b class="num">7/12</b><small>sessões</small></button>
+            </div>
+            <h3 class="grp">Sua saúde</h3>
+            <ul class="menu">
+              <li><button data-go="prontuario"><span class="mi b"><svg class="i sm"><use href="#i-file"/></svg></span><span><b>Prontuário</b><small>Diagnósticos, medicações e histórico</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="caderno"><span class="mi v"><svg class="i sm"><use href="#i-book"/></svg></span><span><b>Meu caderno</b><small>O que você contou à Lia</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="exames"><span class="mi b"><svg class="i sm"><use href="#i-drop"/></svg></span><span><b>Exames</b><small>Resultados e próximos locais</small></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button data-go="conexoes"><span class="mi v"><svg class="i sm"><use href="#i-link"/></svg></span><span><b>Conexões</b><small>Apple Saúde, Clue e mais</small></span><span class="pill num">3 ativas</span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+            </ul>
+            <h3 class="grp">Equipe de cuidado</h3>
+            <ul class="team">
+              <li><span class="t-av">BK</span><span><b>Dra. Beatriz Kanno</b><small>Oncologia clínica</small></span><button class="ib sm" aria-label="Mensagem"><svg class="i sm"><use href="#i-msg"/></svg></button></li>
+              <li><span class="t-av v">RC</span><span><b>Dr. Rafael Couto</b><small>Reprodução humana</small></span><button class="ib sm" aria-label="Mensagem"><svg class="i sm"><use href="#i-msg"/></svg></button></li>
+              <li><span class="t-av g">JP</span><span><b>Joana Prado</b><small>Enfermeira navegadora · 24h</small></span><button class="ib sm" aria-label="Ligar"><svg class="i sm"><use href="#i-phone"/></svg></button></li>
+            </ul>
+            <h3 class="grp">Conta</h3>
+            <ul class="menu">
+              <li><button><span class="mi g"><svg class="i sm"><use href="#i-shield"/></svg></span><span><b>Privacidade e compartilhamento</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+              <li><button><span class="mi g"><svg class="i sm"><use href="#i-bell"/></svg></span><span><b>Notificações e lembretes</b></span><svg class="i sm ch"><use href="#i-right"/></svg></button></li>
+            </ul>
+          </section>
+
+          <!-- ============ PRONTUÁRIO ============ -->
+          <section class="scr" data-s="prontuario">
+            <header class="hd sub"><button class="back" data-go="perfil"><svg class="i"><use href="#i-left"/></svg>Perfil</button></header>
+            <h1 class="serif page-t">Prontuário</h1>
+            <p class="lead">Registro oficial da Meridiano Saúde · atualizado em 28/10</p>
+            <div class="seg wide" id="prSeg"><button class="on" data-v="resumo">Resumo</button><button data-v="meds">Medicações</button><button data-v="hist">Histórico</button></div>
+
+            <div data-pr="resumo">
+              <article class="card dx">
+                <small>Diagnóstico principal</small>
+                <b>Carcinoma ductal invasivo · mama esquerda</b>
+                <div class="dx-tags"><span class="tag blue">RH+</span><span class="tag blue">HER2−</span><span class="tag blue">Estágio IIA</span></div>
+                <p>Em quimioterapia antes da cirurgia (neoadjuvante). Equipe: oncologia clínica, mastologia e reprodução humana.</p>
+              </article>
+              <ul class="kv">
+                <li><span class="kv-ic bad"><svg class="i sm"><use href="#i-alert"/></svg></span><div><small>Alergias</small><b>Sulfa · urticária</b></div></li>
+                <li><span class="kv-ic"><svg class="i sm"><use href="#i-heart"/></svg></span><div><small>Outras condições</small><b>Nódulo de tireoide benigno</b></div></li>
+                <li><span class="kv-ic"><svg class="i sm"><use href="#i-plus"/></svg></span><div><small>Cirurgias e procedimentos</small><b>Septoplastia (2019) · Cateter implantado (2026)</b></div></li>
+                <li><span class="kv-ic v"><svg class="i sm"><use href="#i-users"/></svg></span><div><small>Histórico familiar</small><b>Mãe: câncer de endométrio · Avó: câncer de ovário</b></div></li>
+                <li><span class="kv-ic"><svg class="i sm"><use href="#i-drop"/></svg></span><div><small>Tipo sanguíneo</small><b>O positivo</b></div></li>
+              </ul>
+            </div>
+
+            <div data-pr="meds" hidden>
+              <p class="lead">Marque quando tomar. Sua equipe vê a adesão das últimas 4 semanas.</p>
+              <ul class="medl" id="medl"></ul>
+            </div>
+
+            <div data-pr="hist" hidden>
+              <ul class="hl">
+                <li><span class="hl-y num">2026</span><div><b>Internação por neutropenia febril</b><small>24 a 27/07 · alta sem sequelas</small></div></li>
+                <li><span class="hl-y num">2026</span><div><b>Congelamento de óvulos</b><small>19/06 · 14 óvulos</small></div></li>
+                <li><span class="hl-y num">2026</span><div><b>Implante de cateter</b><small>24/06 · para a quimioterapia</small></div></li>
+                <li><span class="hl-y num">2026</span><div><b>Diagnóstico de câncer de mama</b><small>27/05 · biópsia de 20/05</small></div></li>
+                <li><span class="hl-y num">2023</span><div><b>Nódulo de tireoide</b><small>Punção benigna · ultrassom anual</small></div></li>
+                <li><span class="hl-y num">2019</span><div><b>Septoplastia</b><small>Cirurgia de desvio de septo</small></div></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ============ CADERNO ============ -->
+          <section class="scr" data-s="caderno">
+            <header class="hd sub"><button class="back" data-go="perfil"><svg class="i"><use href="#i-left"/></svg>Perfil</button></header>
+            <h1 class="serif page-t">Meu caderno</h1>
+            <p class="lead">O que você contou à Lia e quer que sua equipe leve em conta. Você decide o que é compartilhado.</p>
+            <button class="btn lia block" data-go="lia"><span class="lia-orb still" style="--s:20px"></span>Contar algo à Lia</button>
+            <div class="nb" id="nb"></div>
+          </section>
+
+          <!-- ============ CONEXÕES ============ -->
+          <section class="scr" data-s="conexoes">
+            <header class="hd sub"><button class="back" data-go="perfil"><svg class="i"><use href="#i-left"/></svg>Perfil</button></header>
+            <h1 class="serif page-t">Conexões</h1>
+            <p class="lead">Conecte apps e dispositivos. Sua equipe vê resumos, como “se exercitou 3 vezes por semana”, e nunca os dados brutos.</p>
+
+            <h3 class="grp">Conectados</h3>
+            <article class="svc-card open">
+              <div class="svc-h">
+                <span class="svc-ic" style="background:linear-gradient(135deg,#FF5E7E,#FF2D55)"><svg class="i fill"><use href="#i-heart"/></svg></span>
+                <span><b>Apple Saúde</b><small><i class="on-dot"></i>Sincronizado há 12 min</small></span>
+                <svg class="i sm ch"><use href="#i-up"/></svg>
+              </div>
+              <ul class="perm">
+                <li><span><svg class="i xs"><use href="#i-steps"/></svg>Passos e exercícios</span><label class="sw"><input type="checkbox" checked><i></i></label></li>
+                <li><span><svg class="i xs"><use href="#i-moon"/></svg>Sono</span><label class="sw"><input type="checkbox" checked><i></i></label></li>
+                <li><span><svg class="i xs"><use href="#i-heart"/></svg>Frequência cardíaca</span><label class="sw"><input type="checkbox" checked><i></i></label></li>
+                <li><span><svg class="i xs"><use href="#i-scale"/></svg>Peso</span><label class="sw"><input type="checkbox"><i></i></label></li>
+              </ul>
+              <p class="svc-note"><svg class="i xs"><use href="#i-watch"/></svg>Inclui os dados do seu Apple Watch</p>
+            </article>
+            <article class="svc-card">
+              <div class="svc-h">
+                <span class="svc-ic" style="background:linear-gradient(135deg,#E85F7F,#B4559B)"><svg class="i"><use href="#i-cycle"/></svg></span>
+                <span><b>Clue</b><small><i class="on-dot"></i>Ciclo e sintomas · hoje, 07:30</small></span>
+                <svg class="i sm ch"><use href="#i-down"/></svg>
+              </div>
+            </article>
+
+            <h3 class="grp">Disponíveis</h3>
+            <ul class="avail">
+              <li><span class="svc-ic" style="background:#00B0B9"><svg class="i"><use href="#i-pulse"/></svg></span><span><b>Fitbit</b><small>Atividade, sono e FC</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><span class="svc-ic" style="background:#34A853"><svg class="i"><use href="#i-heart"/></svg></span><span><b>Health Connect</b><small>Android · dados do celular</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><span class="svc-ic" style="background:#111"><svg class="i"><use href="#i-nav"/></svg></span><span><b>Garmin Connect</b><small>Treinos e recuperação</small></span><button class="btn soft sm" data-connect>Conectar</button></li>
+              <li><span class="svc-ic" style="background:#5A4ED4"><svg class="i"><use href="#i-gauge"/></svg></span><span><b>Medidor de pressão</b><small>Bluetooth</small></span><button class="btn soft sm" data-connect>Parear</button></li>
+              <li><span class="svc-ic" style="background:#3456E3"><svg class="i"><use href="#i-scale"/></svg></span><span><b>Balança inteligente</b><small>Bluetooth</small></span><button class="btn soft sm" data-connect>Parear</button></li>
+            </ul>
+            <div class="privacy"><svg class="i"><use href="#i-shield"/></svg><p><b>Seus dados, suas regras.</b> Você pode desconectar quando quiser. A Meridiano só usa esses dados para o seu cuidado.</p></div>
+          </section>
+        </div>
+
+        <!-- barra inferior -->
+        <nav class="tabbar" id="tabbar" aria-label="Navegação do app">
+          <button data-go="inicio" data-tab="inicio"><svg class="i"><use href="#i-home"/></svg><span>Início</span></button>
+          <button data-go="jornada" data-tab="jornada"><svg class="i"><use href="#i-journey"/></svg><span>Jornada</span></button>
+          <button data-go="lia" data-tab="lia" class="tb-lia" aria-label="Lia"><span class="lia-orb" style="--s:56px"><svg class="i fill"><use href="#i-sparkle"/></svg></span><span>Lia</span></button>
+          <button data-go="agenda" data-tab="agenda"><svg class="i"><use href="#i-calendar"/></svg><span>Agenda</span></button>
+          <button data-go="perfil" data-tab="perfil"><svg class="i"><use href="#i-user"/></svg><span>Perfil</span></button>
+        </nav>
+
+        <!-- ============ CHECKUP (pop-up) ============ -->
+        <div class="sheet-bg" data-sheet="checkup" hidden>
+          <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ckT">
+            <span class="grab"></span>
+            <button class="ib close" data-close aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button>
+            <div class="ck-step" data-step="1">
+              <span class="lia-orb" style="--s:46px"></span>
+              <h2 class="serif" id="ckT">Como você está se sentindo hoje?</h2>
+              <div class="faces" id="faces"></div>
+              <p class="faces-l" id="facesL">Toque em uma opção</p>
+              <h4>Algo novo desde o último checkup?</h4>
+              <div class="sym" id="sym">
+                <button>Cansaço</button><button>Náusea</button><button>Formigamento</button><button>Dor</button>
+                <button data-alert>Febre</button><button>Sono ruim</button><button>Ansiedade</button><button data-none>Nada de novo</button>
+              </div>
+              <h4>Sua energia hoje <span class="num" id="enV">6</span><small>/10</small></h4>
+              <input type="range" min="0" max="10" value="6" id="energy" class="range">
+              <button class="speak"><svg class="i sm"><use href="#i-mic"/></svg>Prefere falar? Conte para a Lia</button>
+              <button class="btn primary block lg" id="ckSend">Enviar para a Lia</button>
+            </div>
+            <div class="ck-step done" data-step="2" hidden>
+              <div class="ok-orb"><svg class="i lg"><use href="#i-check"/></svg></div>
+              <h2 class="serif">Obrigada, Marina.</h2>
+              <p class="lead c" id="ckMsg">Anotei no seu caderno. Sua equipe recebe o resumo da semana na segunda.</p>
+              <div class="alert-card" id="ckAlert" hidden>
+                <svg class="i"><use href="#i-thermo"/></svg>
+                <div><b>Febre durante a quimioterapia é urgente.</b><p>Meça a temperatura. Se for 37,8 °C ou mais, ligue agora para a Central Oncológica 24h.</p>
+                <button class="btn sm danger"><svg class="i xs"><use href="#i-phone"/></svg>Ligar · (11) 4002-8922</button></div>
+              </div>
+              <button class="btn ghost block" data-close>Voltar ao início</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ AGENDAR (pop-up) ============ -->
+        <div class="sheet-bg" data-sheet="agendar" hidden>
+          <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="agT">
+            <span class="grab"></span>
+            <button class="ib close" data-close aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button>
+            <div class="ag-step" data-step="1">
+              <small class="sh-k">Agendar exame</small>
+              <h2 class="serif" id="agT">Ultrassom de tireoide</h2>
+              <p class="lead">Escolha um local perto de você. Não precisa de jejum.</p>
+              <div class="locs" id="locs">
+                <label class="loc"><input type="radio" name="loc" checked><span class="loc-b"><b>Meridiano Diagnósticos · Moema</b><small><svg class="i xs"><use href="#i-pin"/></svg>3,4 km · 12 min de carro</small></span><span class="loc-n num">seg 09/11</span></label>
+                <label class="loc"><input type="radio" name="loc"><span class="loc-b"><b>Unidade Paulista</b><small><svg class="i xs"><use href="#i-pin"/></svg>2,1 km · no dia da sua sessão</small></span><span class="loc-n num">qua 04/11</span></label>
+                <label class="loc"><input type="radio" name="loc"><span class="loc-b"><b>Unidade Vila Mariana</b><small><svg class="i xs"><use href="#i-pin"/></svg>4,0 km · 15 min de carro</small></span><span class="loc-n num">ter 10/11</span></label>
+              </div>
+              <h4>Horários</h4>
+              <div class="times" id="times"><button>07:40</button><button class="on">08:20</button><button>09:00</button><button>10:40</button><button>14:00</button><button>16:20</button></div>
+              <p class="tip-lia"><span class="lia-orb still" style="--s:18px"></span>Na quarta você já vai à Unidade Paulista. Quer aproveitar a ida?</p>
+              <button class="btn primary block lg" id="agOk">Confirmar agendamento</button>
+            </div>
+            <div class="ag-step done" data-step="2" hidden>
+              <div class="ok-orb"><svg class="i lg"><use href="#i-calendar"/></svg></div>
+              <h2 class="serif">Agendado!</h2>
+              <p class="lead c" id="agMsg">Ultrassom de tireoide · seg, 09/11 · 08:20<br>Meridiano Diagnósticos · Moema</p>
+              <p class="fine c">A Lia te lembra na véspera.</p>
+              <button class="btn ghost block" data-close>Fechar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ptoast" id="ptoast" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

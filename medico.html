@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OncoLink · Painel do médico</title>
+<meta name="description" content="Protótipo do painel clínico do OncoLink: jornada, sinais de wearables, marcadores, adesão e insights prontos para enviar.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/medico.css">
+</head>
+<body class="md">
+<script src="assets/js/icons.js"></script>
+
+<aside class="rail" aria-label="Navegação principal">
+  <a class="rail-logo" href="index.html" title="OncoLink"><svg class="brand-mark"><use href="#oncolink-mark"/></svg></a>
+  <nav class="rail-nav">
+    <a href="#" title="Visão geral"><svg class="i"><use href="#i-grid"/></svg></a>
+    <a href="#" class="on" title="Pacientes"><svg class="i"><use href="#i-users"/></svg></a>
+    <a href="#" title="Agenda"><svg class="i"><use href="#i-calendar"/></svg></a>
+    <a href="#" title="Insights"><svg class="i"><use href="#i-bulb"/></svg><em>12</em></a>
+    <a href="#" title="Mensagens"><svg class="i"><use href="#i-msg"/></svg></a>
+    <a href="#" title="Relatórios"><svg class="i"><use href="#i-chart"/></svg></a>
+  </nav>
+  <div class="rail-foot">
+    <a href="#" title="Configurações"><svg class="i"><use href="#i-sliders"/></svg></a>
+    <span class="av sm" title="Dra. Beatriz Kanno">BK</span>
+  </div>
+</aside>
+
+<div class="shell">
+  <header class="top">
+    <div class="crumbs">
+      <a href="#">Pacientes</a><svg class="i xs"><use href="#i-right"/></svg>
+      <a href="#">Oncologia mamária</a><svg class="i xs"><use href="#i-right"/></svg>
+      <b>Marina Albuquerque Teles</b>
+    </div>
+    <label class="search">
+      <svg class="i sm"><use href="#i-search"/></svg>
+      <input type="search" placeholder="Buscar paciente, exame ou laudo">
+      <kbd>⌘K</kbd>
+    </label>
+    <div class="top-r">
+      <span class="today num">sáb, 31 out 2026</span>
+      <button class="btn icon ghost bell" title="Notificações"><svg class="i"><use href="#i-bell"/></svg><i></i></button>
+      <div class="me">
+        <span class="av">BK</span>
+        <span><b>Dra. Beatriz Kanno</b><small>Oncologia clínica · CRM-SP 148.203</small></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- cabeçalho da paciente -->
+    <section class="pt card">
+      <div class="pt-id">
+        <img class="pt-photo" src="assets/img/marina.svg" alt="Foto de Marina">
+        <div>
+          <div class="pt-name-row">
+            <h1 class="serif">Marina Albuquerque Teles</h1>
+            <span class="tag ok"><span class="dot"></span>App ativo · último acesso há 2 h</span>
+          </div>
+          <p class="pt-meta num">38 anos · feminino · nasc. 14/03/1988 · prontuário 0048-2213 · Meridiano Prime · vinculada desde mai/2026</p>
+          <div class="pt-tags">
+            <span class="chip"><svg class="i"><use href="#i-flag"/></svg>CDI mama esquerda · RH+ HER2− · cT2N0</span>
+            <span class="chip"><svg class="i"><use href="#i-heart"/></svg>Desejo reprodutivo</span>
+            <span class="chip"><svg class="i"><use href="#i-users"/></svg>Mãe: CA de endométrio aos 52</span>
+            <span class="chip"><svg class="i"><use href="#i-wave"/></svg>Ex-tabagista · 8 maços-ano</span>
+            <span class="chip warn-chip"><svg class="i"><use href="#i-alert"/></svg>Alergia: sulfa</span>
+          </div>
+        </div>
+      </div>
+      <div class="pt-phase">
+        <div class="ring" style="--p:58.3">
+          <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18.5"/><circle class="v" cx="22" cy="22" r="18.5"/></svg>
+          <span class="num"><b>7</b>/12</span>
+        </div>
+        <div>
+          <small>Fase atual</small>
+          <b>QT neoadjuvante · Paclitaxel semanal</b>
+          <span class="num">Próxima sessão: qua, 04/11 · 08:00</span>
+        </div>
+      </div>
+      <div class="pt-act">
+        <button class="btn ghost"><svg class="i sm"><use href="#i-file"/></svg>Prontuário</button>
+        <button class="btn ghost"><svg class="i sm"><use href="#i-msg"/></svg>Mensagem</button>
+        <button class="btn primary"><svg class="i sm"><use href="#i-plus"/></svg>Nova solicitação</button>
+      </div>
+    </section>
+
+    <!-- lentes do prontuário (estilo GitLens) -->
+    <section class="lenses" aria-label="Lentes do prontuário">
+      <div class="lens"><svg class="i xs"><use href="#i-journey"/></svg><span class="src">prontuário · 28/10</span><b>Faltam 5 sessões de paclitaxel</b><span class="sep">·</span>8ª de 12 em 04/11 · término previsto 02/12</div>
+      <div class="lens"><svg class="i xs"><use href="#i-heart"/></svg><span class="src">protocolo antraciclina</span><b>Ecocardiograma de controle vence em 6 dias</b><span class="sep">·</span>último 26/08 · FEVE 60%</div>
+      <div class="lens warn"><svg class="i xs"><use href="#i-clock"/></svg><span class="src">endocrinologia · 29/09/2025</span><b>US de tireoide atrasado 1 mês</b><span class="sep">·</span>sem responsável ativo desde a alta</div>
+      <div class="lens"><svg class="i xs"><use href="#i-sparkle"/></svg><span class="src">reprodução humana · 19/06</span><b>14 oócitos criopreservados</b><span class="sep">·</span>retorno em 12/11</div>
+    </section>
+
+    <div class="layout">
+      <div class="col-main">
+
+        <!-- jornada clínica -->
+        <section class="card w-journey">
+          <header class="w-h">
+            <div class="w-t"><svg class="i"><use href="#i-journey"/></svg><h3>Jornada clínica</h3><span class="w-src">prontuário + app · mai/2026 → jan/2027</span></div>
+            <div class="w-a">
+              <div class="seg" role="tablist">
+                <button class="on">Linha do tempo</button><button>Lista</button>
+              </div>
+            </div>
+          </header>
+          <div class="jg-wrap"><div id="jgraph" class="jgraph"></div></div>
+          <footer class="jg-legend" id="jlegend"></footer>
+        </section>
+
+        <div class="row r2">
+          <!-- mapa do corpo -->
+          <section class="card w-body">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-user"/></svg><h3>Mapa do corpo</h3></div>
+              <div class="w-a"><div class="seg sm"><button class="on">Frente</button><button>Costas</button></div></div>
+            </header>
+            <div class="body-wrap">
+              <div class="body-fig" id="bodyfig"></div>
+              <ul class="body-list" id="bodylist"></ul>
+            </div>
+          </section>
+
+          <!-- marcadores -->
+          <section class="card w-markers">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-chart"/></svg><h3>Marcadores</h3><span class="w-src">laboratório Meridiano</span></div>
+            </header>
+            <div class="mk-tabs" id="mktabs" role="tablist"></div>
+            <div class="mk-head" id="mkhead"></div>
+            <div class="mk-chart" id="mkchart"></div>
+            <div class="lens inline" id="mklens"></div>
+            <div class="mk-table" id="mktable"></div>
+          </section>
+        </div>
+
+        <div class="row r3">
+          <!-- apple watch -->
+          <section class="card w-watch">
+            <header class="w-h">
+              <div class="w-t"><span class="svc watch"><svg class="i sm"><use href="#i-watch"/></svg></span><h3>Apple Watch</h3><span class="w-src">via Apple Saúde · sincronizado há 12 min</span></div>
+              <div class="w-a"><span class="tag gray"><svg class="i xs"><use href="#i-lock"/></svg>Dados agregados</span></div>
+            </header>
+            <div class="watch-grid">
+              <div class="metric">
+                <small><svg class="i xs"><use href="#i-steps"/></svg>Passos por dia</small>
+                <b class="num">6.240</b><span class="delta down num">−12% · média 14 dias</span>
+                <div class="spark" id="sp-passos"></div>
+              </div>
+              <div class="metric">
+                <small><svg class="i xs"><use href="#i-flame"/></svg>Exercício</small>
+                <b class="num">3,2<em>×/sem</em></b><span class="delta num">último mês · 28 min</span>
+                <div class="weeks" id="wk-ex"></div>
+              </div>
+              <div class="metric">
+                <small><svg class="i xs"><use href="#i-moon"/></svg>Sono</small>
+                <b class="num">6h12</b><span class="delta down num">−48 min vs. basal</span>
+                <div class="spark" id="sp-sono"></div>
+              </div>
+              <div class="metric hi">
+                <small><svg class="i xs"><use href="#i-heart"/></svg>FC de repouso</small>
+                <b class="num">74<em>bpm</em></b><span class="delta up num">+12 bpm em 30 dias</span>
+                <div class="spark" id="sp-fc"></div>
+              </div>
+            </div>
+            <p class="w-foot"><b>Resumo para o prontuário:</b> se exercitou em média 3 vezes por semana no último mês; sono 48 min abaixo do basal; FC de repouso em alta desde o início de outubro.</p>
+          </section>
+
+          <!-- clue -->
+          <section class="card w-clue">
+            <header class="w-h">
+              <div class="w-t"><span class="svc clue"><svg class="i sm"><use href="#i-cycle"/></svg></span><h3>Clue</h3><span class="w-src">ciclo e sintomas</span></div>
+            </header>
+            <div class="clue-body">
+              <div class="clue-ring" id="cluering"></div>
+              <div class="clue-info">
+                <div class="clue-cyc" id="cluecyc"></div>
+                <ul class="clue-sym">
+                  <li><span>Fogachos</span><b class="num">9 dias</b></li>
+                  <li><span>Fadiga</span><b class="num">14 dias</b></li>
+                  <li><span>Alteração de humor</span><b class="num">6 dias</b></li>
+                </ul>
+              </div>
+            </div>
+            <p class="w-foot">Amenorreia esperada com QT + gosserrelina. Relevante para o retorno à reprodução humana.</p>
+          </section>
+        </div>
+
+        <div class="row r4">
+          <!-- rotina -->
+          <section class="card w-routine">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-clock"/></svg><h3>Rotina</h3><span class="w-src">padrão das últimas 4 semanas</span></div>
+            </header>
+            <div class="heat" id="heat"></div>
+            <ul class="routine-list">
+              <li><svg class="i xs"><use href="#i-moon"/></svg>Dorme ~23h40, acorda ~6h50</li>
+              <li><svg class="i xs"><use href="#i-steps"/></svg>Caminhadas seg, ter e sáb pela manhã</li>
+              <li><svg class="i xs"><use href="#i-building"/></svg>Home office · sedentária das 9h às 18h</li>
+              <li><svg class="i xs"><use href="#i-syringe"/></svg>Após a sessão de quarta, atividade baixa até sexta</li>
+            </ul>
+          </section>
+
+          <!-- checklist -->
+          <section class="card w-check">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-checkc"/></svg><h3>Checklist de bem-estar</h3><span class="w-src">semanal · 6/6 respondidos</span></div>
+            </header>
+            <div class="ck" id="ck"></div>
+            <div class="ck-legend"><span><i class="s1"></i>ruim</span><span><i class="s3"></i>regular</span><span><i class="s5"></i>ótimo</span><span class="q">“Às vezes derrubo coisas.” · 31/10</span></div>
+          </section>
+        </div>
+
+        <div class="row r5">
+          <!-- agenda de exames -->
+          <section class="card w-exams">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-file"/></svg><h3>Agenda de exames</h3></div>
+              <div class="w-a"><button class="btn sm ghost"><svg class="i xs"><use href="#i-plus"/></svg>Solicitar</button></div>
+            </header>
+            <ul class="ex-list">
+              <li class="late">
+                <span class="ex-st"><svg class="i sm"><use href="#i-clock"/></svg></span>
+                <div><b>Ultrassom de tireoide</b><small>Anual · venceu em 29/09 · sem responsável ativo</small></div>
+                <span class="tag warn">Atrasado 1 mês</span>
+              </li>
+              <li class="late">
+                <span class="ex-st"><svg class="i sm"><use href="#i-clock"/></svg></span>
+                <div><b>Papanicolau</b><small>Padrão da rede: anual · último 12/08/2025</small></div>
+                <span class="tag warn">Atrasado 2 meses</span>
+              </li>
+              <li>
+                <span class="ex-st soon"><svg class="i sm"><use href="#i-drop"/></svg></span>
+                <div><b>Hemograma pré-sessão 8</b><small>Até ter, 03/11 · coleta domiciliar disponível</small></div>
+                <span class="tag blue">Em 3 dias</span>
+              </li>
+              <li>
+                <span class="ex-st soon"><svg class="i sm"><use href="#i-heart"/></svg></span>
+                <div><b>Ecocardiograma de controle</b><small>Protocolo pós-antraciclina · até 06/11</small></div>
+                <span class="tag blue">Em 6 dias</span>
+              </li>
+              <li>
+                <span class="ex-st"><svg class="i sm"><use href="#i-scale"/></svg></span>
+                <div><b>RM de mamas</b><small>Resposta à neoadjuvância · após a sessão 12</small></div>
+                <span class="tag gray">16/12</span>
+              </li>
+              <li class="sug">
+                <span class="ex-st lia-st"><svg class="i sm"><use href="#i-sparkle"/></svg></span>
+                <div><b>Painel genético germinativo</b><small>Sugerido pela Lia · critérios de rastreio hereditário</small></div>
+                <span class="tag violet">A solicitar</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- histórico -->
+          <section class="card w-hist">
+            <header class="w-h">
+              <div class="w-t"><svg class="i"><use href="#i-book"/></svg><h3>Histórico relevante</h3></div>
+              <div class="w-a"><a class="link" href="#">Prontuário completo<svg class="i xs"><use href="#i-ext"/></svg></a></div>
+            </header>
+            <ul class="hist">
+              <li><span class="y num">2026</span><div><b>Internação por neutropenia febril</b><small>24–27/07 · após ciclo 2 de AC · filgrastim a partir do C3</small></div></li>
+              <li><span class="y num">2026</span><div><b>Criopreservação de oócitos</b><small>14 oócitos · 19/06 · antes da QT</small></div></li>
+              <li><span class="y num">2026</span><div><b>Implante de cateter totalmente implantável</b><small>Subclávia direita · 24/06</small></div></li>
+              <li><span class="y num">2023</span><div><b>Nódulo tireoidiano · TI-RADS 3</b><small>PAAF benigna (Bethesda II) · ultrassom anual</small></div></li>
+              <li><span class="y num">2019</span><div><b>Septoplastia</b><small>Desvio de septo · sem intercorrências</small></div></li>
+              <li class="fam"><span class="y">Família</span><div><b>Mãe: câncer de endométrio aos 52</b><small>Avó materna: câncer de ovário aos 61</small></div></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-side">
+        <!-- insights -->
+        <section class="card w-insights">
+          <header class="w-h">
+            <div class="w-t"><span class="lia-orb" style="--s:20px"></span><h3>Insights da <span class="lia-name">Lia</span></h3></div>
+            <div class="w-a"><span class="tag violet num">6 novos</span></div>
+          </header>
+          <p class="ins-intro">Prontos para enviar. A Lia cruza prontuário, app, wearables e o protocolo da rede.</p>
+          <ul class="ins" id="ins">
+            <li class="p-hi" data-on="1">
+              <label class="ins-ck"><input type="checkbox" checked><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag bad">Alta</span><b>Avaliar neuropatia periférica antes da sessão 8</b></div>
+                <p>Formigamento relatado em 24/10 e mantido hoje; checklist caiu de 5 para 2 em 3 semanas.</p>
+                <div class="ins-src"><span>Chat da Lia</span><span>Checklist</span><span>Paclitaxel 7/12</span></div>
+                <div class="ins-act"><button class="btn sm primary">Agendar consulta 03/11</button><button class="btn sm ghost">Ajustar dose</button></div>
+              </div>
+            </li>
+            <li class="p-hi" data-on="1">
+              <label class="ins-ck"><input type="checkbox" checked><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag bad">Alta</span><b>Solicitar ECG e antecipar ecocardiograma</b></div>
+                <p>FC de repouso subiu de 62 para 74 bpm em 4 semanas após antraciclina. Último eco em 26/08.</p>
+                <div class="ins-src"><span>Apple Watch</span><span>Protocolo antraciclina</span></div>
+                <div class="ins-act"><button class="btn sm primary">Solicitar ECG + eco</button></div>
+              </div>
+            </li>
+            <li class="p-md" data-on="1">
+              <label class="ins-ck"><input type="checkbox" checked><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag warn">Média</span><b>Encaminhar para psico-oncologia</b></div>
+                <p>Humor ≤ 2 por 3 semanas seguidas e sono 48 min abaixo do basal.</p>
+                <div class="ins-src"><span>Checklist</span><span>Apple Watch</span></div>
+                <div class="ins-act"><button class="btn sm primary">Encaminhar</button></div>
+              </div>
+            </li>
+            <li class="p-md">
+              <label class="ins-ck"><input type="checkbox"><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag warn">Média</span><b>Solicitar painel genético germinativo</b></div>
+                <p>CA de mama aos 38, mãe com CA de endométrio aos 52 e avó com CA de ovário: critérios para BRCA1/2 e genes de Lynch.</p>
+                <div class="ins-src"><span>Caderno da paciente</span><span>Diretriz da rede</span></div>
+                <div class="ins-act"><button class="btn sm primary">Solicitar painel</button><button class="btn sm ghost">Aconselhamento genético</button></div>
+              </div>
+            </li>
+            <li class="p-lo">
+              <label class="ins-ck"><input type="checkbox"><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag blue">Baixa</span><b>Reagendar ultrassom de tireoide</b></div>
+                <p>Atrasado 1 mês, sem responsável desde a alta da endocrinologia. A paciente já recebeu um lembrete.</p>
+                <div class="ins-src"><span>Prontuário</span><span>Protocolo da rede</span></div>
+                <div class="ins-act"><button class="btn sm primary">Enviar pedido à paciente</button></div>
+              </div>
+            </li>
+            <li class="p-lo">
+              <label class="ins-ck"><input type="checkbox"><span></span></label>
+              <div class="ins-b">
+                <div class="ins-t"><span class="tag blue">Baixa</span><b>Programar Papanicolau após a QT</b></div>
+                <p>Rastreio atrasado pelo padrão da rede. Sugerido lembrete para janeiro de 2027.</p>
+                <div class="ins-src"><span>Padrão da rede</span></div>
+                <div class="ins-act"><button class="btn sm primary">Criar lembrete</button></div>
+              </div>
+            </li>
+          </ul>
+          <footer class="ins-foot">
+            <span id="inscount" class="num">3 selecionados</span>
+            <button class="btn lia" id="inssend"><svg class="i sm"><use href="#i-send"/></svg>Enviar selecionados</button>
+          </footer>
+        </section>
+
+        <!-- medicações -->
+        <section class="card w-meds">
+          <header class="w-h">
+            <div class="w-t"><svg class="i"><use href="#i-pill"/></svg><h3>Medicações em uso</h3><span class="w-src">adesão autorrelatada · 28 dias</span></div>
+          </header>
+          <ul class="meds">
+            <li><div><b>Paclitaxel 80 mg/m² IV</b><small>Semanal · no hospital · 7 de 12</small></div><div class="adh" style="--v:100"><span class="num">100%</span><i></i></div></li>
+            <li><div><b>Gosserrelina 3,6 mg SC</b><small>A cada 28 dias · proteção ovariana</small></div><div class="adh" style="--v:100"><span class="num">100%</span><i></i></div></li>
+            <li><div><b>Dexametasona 10 mg IV</b><small>Pré-medicação da sessão</small></div><div class="adh" style="--v:100"><span class="num">100%</span><i></i></div></li>
+            <li><div><b>Ondansetrona 8 mg VO</b><small>Se náusea · média 2×/semana</small></div><div class="adh sos"><span>SOS</span></div></li>
+            <li class="low"><div><b>Omeprazol 20 mg VO</b><small>1×/dia em jejum · 8 doses perdidas</small></div><div class="adh warn" style="--v:71"><span class="num">71%</span><i></i></div></li>
+            <li class="low"><div><b>Colecalciferol 7.000 UI</b><small>Semanal · 2 de 4 semanas</small></div><div class="adh bad" style="--v:50"><span class="num">50%</span><i></i></div></li>
+          </ul>
+        </section>
+
+        <!-- agendamentos -->
+        <section class="card w-agenda">
+          <header class="w-h">
+            <div class="w-t"><svg class="i"><use href="#i-calendar"/></svg><h3>Agendamentos</h3></div>
+            <div class="w-a"><div class="seg sm"><button class="on">Todos</button><button>Próximos</button></div></div>
+          </header>
+          <ol class="ag">
+            <li class="ag-sec">Próximos</li>
+            <li class="next sug"><span class="ag-d num"><b>03</b>nov</span><div><b>Consulta · avaliação de neuropatia</b><small>Ter · 10:20 · Dra. Beatriz Kanno · sugerida pela Lia</small></div><span class="tag violet">Aguardando</span></li>
+            <li class="next"><span class="ag-d num"><b>04</b>nov</span><div><b>Paclitaxel · sessão 8</b><small>Qua · 08:00 · Infusão, 4º andar · Unidade Paulista</small></div><span class="tag blue">Confirmado</span></li>
+            <li class="next"><span class="ag-d num"><b>06</b>nov</span><div><b>Nutrição oncológica</b><small>Sex · 15:00 · teleconsulta</small></div><span class="tag blue">Confirmado</span></li>
+            <li class="next"><span class="ag-d num"><b>12</b>nov</span><div><b>Reprodução humana</b><small>Qui · 09:30 · Dr. Rafael Couto</small></div><span class="tag gray">Agendado</span></li>
+            <li class="ag-sec">Últimos</li>
+            <li><span class="ag-d num"><b>28</b>out</span><div><b>Paclitaxel · sessão 7</b><small>Realizada · sem reação infusional</small></div><svg class="i sm ok-ic"><use href="#i-checkc"/></svg></li>
+            <li><span class="ag-d num"><b>27</b>out</span><div><b>Hemograma</b><small>Neutrófilos 1.620 · liberada</small></div><svg class="i sm ok-ic"><use href="#i-checkc"/></svg></li>
+            <li><span class="ag-d num"><b>06</b>out</span><div><b>Pronto atendimento · ITU</b><small>Nitrofurantoína 7 dias · sessão 5 adiada</small></div><svg class="i sm warn-ic"><use href="#i-alert"/></svg></li>
+          </ol>
+        </section>
+
+        <!-- contado à Lia -->
+        <section class="card w-notes">
+          <header class="w-h">
+            <div class="w-t"><span class="lia-orb still" style="--s:20px"></span><h3>Contado à <span class="lia-name">Lia</span></h3><span class="w-src">caderno da paciente</span></div>
+          </header>
+          <ul class="notes">
+            <li><span class="n-ic sym"><svg class="i xs"><use href="#i-mic"/></svg></span><div><p>“Continua igual o formigamento. Às vezes derrubo coisas.”</p><small>Hoje, 09:14 · por voz · sintoma</small></div></li>
+            <li><span class="n-ic sym"><svg class="i xs"><use href="#i-mic"/></svg></span><div><p>“Tô sentindo formigamento na ponta dos dedos, principalmente de manhã.”</p><small>24/10 · por voz · sintoma</small></div></li>
+            <li><span class="n-ic hab"><svg class="i xs"><use href="#i-steps"/></svg></span><div><p>Voltou a caminhar 3 vezes por semana, 30 minutos.</p><small>12/10 · texto · hábito</small></div></li>
+            <li><span class="n-ic ev"><svg class="i xs"><use href="#i-thermo"/></svg></span><div><p>Infecção urinária, tratada no pronto atendimento.</p><small>06/10 · registro · intercorrência</small></div></li>
+            <li><span class="n-ic plan"><svg class="i xs"><use href="#i-heart"/></svg></span><div><p>Quer engravidar depois do tratamento.</p><small>02/06 · por voz · plano de vida</small></div></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <p class="proto-note foot">Protótipo de interface do OncoLink. Paciente, equipe, instituição e dados clínicos são fictícios.</p>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/medico.js"></script>
+</body>
+</html>

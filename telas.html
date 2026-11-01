@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OncoLink · Telas do app</title>
+<meta name="description" content="Todas as telas do app do paciente do OncoLink, lado a lado.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  body{background:radial-gradient(900px 500px at 90% -10%,rgba(139,108,246,.14),transparent 60%),#F1F2F9}
+  .wrap{max-width:1480px;margin:0 auto;padding:28px 32px 56px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .bar nav{display:flex;gap:8px;flex-wrap:wrap}
+  .intro{margin:36px 0 28px;max-width:720px}
+  .intro small{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+  .intro h1{font-size:48px;line-height:1;margin:8px 0 12px}
+  .intro p{font-size:15px;color:var(--muted);line-height:1.55}
+  .grid{--s:.6;display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(414px * var(--s)),1fr));gap:40px 28px;justify-items:center}
+  .shot{width:calc(414px * var(--s))}
+  .fr{width:calc(414px * var(--s));height:calc(868px * var(--s));overflow:hidden;border-radius:calc(62px * var(--s))}
+  .fr iframe{width:414px;height:868px;border:0;transform:scale(var(--s));transform-origin:0 0;background:transparent;display:block}
+  .cap{margin-top:14px}
+  .cap span{font-family:var(--fm);font-size:11px;color:var(--dim)}
+  .cap b{display:block;font-size:15px;font-weight:600;margin:2px 0 3px}
+  .cap p{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .cap a{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--blue);margin-top:6px}
+  .foot{margin-top:48px;text-align:center}
+  @media (max-width:640px){.wrap{padding:20px 16px 40px}.intro h1{font-size:36px}.grid{--s:.72}}
+</style>
+</head>
+<body>
+<script src="assets/js/icons.js"></script>
+<div class="wrap">
+  <header class="bar">
+    <a class="brand" href="index.html"><svg class="brand-mark"><use href="#oncolink-mark"/></svg><b>Onco<span>Link</span></b></a>
+    <nav>
+      <a class="btn ghost sm" href="app.html"><svg class="i xs"><use href="#i-phone"/></svg>App interativo</a>
+      <a class="btn ghost sm" href="medico.html"><svg class="i xs"><use href="#i-stetho"/></svg>Painel do médico</a>
+    </nav>
+  </header>
+  <section class="intro">
+    <small>App do paciente</small>
+    <h1 class="serif">Todas as telas</h1>
+    <p>Navegação pela barra inferior, com a <span class="lia-name">Lia</span> no centro. Cada tela abaixo é a própria interface, não uma imagem. Abra uma para interagir.</p>
+  </section>
+  <div class="grid" id="grid"></div>
+  <p class="proto-note foot">Protótipo. Pessoas, instituição e dados clínicos são fictícios.</p>
+</div>
+<script>
+  const T = [
+    ['inicio','Início','Checkup, próxima etapa do tratamento, lembretes da Lia e dados da semana.'],
+    ['jornada','Jornada','Tratamentos, intercorrências, internações e altas em trilhas, como um histórico de versões.'],
+    ['lia','Lia','Chat por texto e voz. A Lia acompanha o que você conta e propõe consultas.'],
+    ['checkup','Checkup','O pop-up “como você está se sentindo”.'],
+    ['agenda','Agenda','Consultas e sessões, incluindo as sugeridas pela Lia.'],
+    ['exames','Exames','Resultados recentes e onde fazer os próximos, perto de você.'],
+    ['agendar','Agendar','Escolha de local próximo e horário para um exame atrasado.'],
+    ['perfil','Perfil','Foto, vínculo com a rede e equipe de cuidado.'],
+    ['prontuario','Prontuário','Diagnóstico, alergias, medicações com adesão e histórico.'],
+    ['caderno','Caderno','O que a paciente contou à Lia, com controle de compartilhamento.'],
+    ['conexoes','Conexões','Apple Saúde, Clue, Fitbit e outros, com permissões por tipo de dado.']
+  ];
+  document.getElementById('grid').innerHTML = T.map(([k, n, d], i) => `
+    <figure class="shot" style="margin:0">
+      <div class="fr"><iframe src="app.html?tela=${k}&solo=1" title="Tela ${n}" loading="lazy" tabindex="-1"></iframe></div>
+      <figcaption class="cap"><span>${String(i + 1).padStart(2, '0')}</span><b>${n}</b><p>${d}</p>
+      <a href="app.html?tela=${k}">Abrir interativo ${ic('right','xs')}</a></figcaption>
+    </figure>`).join('');
+</script>
+</body>
+</html>

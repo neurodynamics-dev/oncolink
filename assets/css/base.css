@@ -1,0 +1,144 @@
+/* ============================================================
+   OncoLink · base
+   Tokens, reset e peças comuns às duas interfaces (médico e paciente).
+   Azuis e roxos vêm das famílias Retina, Nexo e Dendrito da paleta
+   NeuroDynamics; o resto é neutro frio para a leitura clínica.
+   ============================================================ */
+:root{
+  /* superfícies */
+  --bg:#F4F5FA;
+  --bg-2:#EEF0F7;
+  --surface:#FFFFFF;
+  --surface-2:#F8F9FD;
+  --line:#E6E8F1;
+  --line-2:#D6D9E7;
+
+  /* tinta */
+  --ink:#131733;
+  --ink-2:#363B5E;
+  --muted:#5F6488;
+  --dim:#8E92AE;
+
+  /* azuis e roxos */
+  --blue:#3456E3;
+  --blue-700:#2340B8;
+  --blue-900:#142A75;
+  --blue-100:#E0E6FC;
+  --blue-50:#EEF2FE;
+  --indigo:#5A4ED4;
+  --indigo-100:#E7E5FA;
+  --violet:#8B6CF6;
+  --violet-300:#BCA8FB;
+  --violet-100:#EEE8FE;
+  --violet-50:#F6F3FF;
+
+  /* estados (só interface) */
+  --ok:#0F9F7A;    --ok-50:#E3F6EF;   --ok-tx:#0A6B52;
+  --warn:#D58A00;  --warn-50:#FFF4DC; --warn-tx:#7A4D00;
+  --bad:#DD3F57;   --bad-50:#FDE8EB;  --bad-tx:#9A1F33;
+  --info:var(--blue); --info-50:var(--blue-50);
+
+  /* Lia: a única superfície em gradiente */
+  --lia-a:#3B5BFF;
+  --lia-b:#6A4BF2;
+  --lia-c:#B47CFF;
+  --lia:linear-gradient(135deg,var(--lia-a) 0%,var(--lia-b) 52%,var(--lia-c) 100%);
+  --lia-soft:linear-gradient(135deg,#EEF1FF 0%,#F1ECFF 60%,#F8EEFF 100%);
+
+  /* tipo */
+  --f:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --fd:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --fm:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* forma */
+  --r-xs:6px; --r-sm:10px; --r-md:14px; --r-lg:18px; --r-xl:24px;
+  --sh-1:0 1px 2px rgba(19,23,51,.04),0 1px 1px rgba(19,23,51,.03);
+  --sh-2:0 1px 2px rgba(19,23,51,.04),0 8px 24px -12px rgba(19,23,51,.12);
+  --sh-3:0 2px 4px rgba(19,23,51,.05),0 24px 48px -16px rgba(19,23,51,.22);
+  --sh-lia:0 10px 30px -10px rgba(90,70,240,.55);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--f);font-size:14px;line-height:1.45;color:var(--ink);
+  background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"ss01","cv11";
+}
+h1,h2,h3,h4,p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+input,textarea{font:inherit;color:inherit}
+svg{display:block}
+[hidden]{display:none !important}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--fm)}
+.serif{font-family:var(--fd);font-weight:400;letter-spacing:-.005em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+
+/* ícones (sprite em icons.js) */
+.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.i.sm{width:15px;height:15px}
+.i.xs{width:13px;height:13px}
+.i.lg{width:22px;height:22px}
+.i.fill{fill:currentColor;stroke:none}
+
+/* marca OncoLink */
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.01em;font-size:16px}
+.brand-mark{width:26px;height:26px}
+.brand b{font-weight:700}
+.brand span{color:var(--blue)}
+
+/* Lia: orbe */
+.lia-orb{
+  --s:28px;display:inline-block;width:var(--s);height:var(--s);border-radius:50%;flex:none;position:relative;
+  background:
+    radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 8%,rgba(255,255,255,0) 30%),
+    radial-gradient(circle at 70% 80%,rgba(180,124,255,.95),rgba(180,124,255,0) 60%),
+    var(--lia);
+  box-shadow:inset 0 -2px 6px rgba(40,20,140,.35),0 4px 14px -4px rgba(90,70,240,.6);
+}
+.lia-orb::after{
+  content:"";position:absolute;inset:-3px;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(59,91,255,0),rgba(180,124,255,.55),rgba(59,91,255,0) 60%);
+  filter:blur(4px);opacity:.7;z-index:-1;animation:lia-spin 6s linear infinite;
+}
+.lia-orb.still::after{animation:none}
+@keyframes lia-spin{to{transform:rotate(360deg)}}
+.lia-name{font-family:var(--fd);font-style:italic;font-size:1.12em;letter-spacing:.005em;
+  background:var(--lia);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* chips e etiquetas */
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;
+  font-size:12px;font-weight:500;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);white-space:nowrap}
+.chip .i{width:13px;height:13px}
+.tag{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 7px;border-radius:5px;
+  font-size:11px;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.tag.blue{background:var(--blue-50);color:var(--blue-700)}
+.tag.violet{background:var(--violet-100);color:#4B2DB3}
+.tag.ok{background:var(--ok-50);color:var(--ok-tx)}
+.tag.warn{background:var(--warn-50);color:var(--warn-tx)}
+.tag.bad{background:var(--bad-50);color:var(--bad-tx)}
+.tag.gray{background:var(--bg-2);color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;flex:none;background:currentColor}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:36px;padding:0 14px;
+  border-radius:var(--r-sm);font-weight:600;font-size:13px;white-space:nowrap;
+  transition:background .15s var(--ease),border-color .15s var(--ease),box-shadow .15s var(--ease),transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--blue);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 4px 12px -6px rgba(52,86,227,.7)}
+.btn.primary:hover{background:var(--blue-700)}
+.btn.ghost{background:var(--surface);border:1px solid var(--line-2);color:var(--ink-2)}
+.btn.ghost:hover{border-color:var(--dim);background:var(--surface-2)}
+.btn.soft{background:var(--blue-50);color:var(--blue-700)}
+.btn.soft:hover{background:var(--blue-100)}
+.btn.lia{background:var(--lia);color:#fff;box-shadow:var(--sh-lia)}
+.btn.sm{height:30px;padding:0 11px;font-size:12px;border-radius:8px}
+.btn.icon{width:36px;padding:0}
+.btn.icon.sm{width:30px}
+
+/* aviso de protótipo */
+.proto-note{font-size:11.5px;color:var(--dim)}
