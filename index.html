@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OncoLink · Protótipo</title>
 <meta name="description" content="Protótipo do OncoLink: painel do médico e app do paciente para o acompanhamento contínuo da jornada oncológica, da prevenção ao tratamento.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,6 +54,7 @@
   .how b{display:block;font-size:14.5px;font-weight:600;margin-bottom:4px}
   .how p{font-size:13px;color:var(--muted);line-height:1.5}
   .foot{margin-top:56px;text-align:center}
+  .foot a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   @media (max-width:960px){.hero{grid-template-columns:1fr;margin:40px 0}.cards{grid-template-columns:1fr 1fr}.cards .cardx:first-child{grid-column:1/-1}.how{grid-template-columns:1fr 1fr}}
   @media (max-width:600px){.wrap{padding:20px 16px 40px}.bar small{display:none}.cards,.how{grid-template-columns:1fr}.cta .btn{flex:1}}
 </style>
@@ -97,7 +100,7 @@
     </a>
     <a class="cardx" href="telas.html">
       <div class="pv ph"><img src="assets/img/preview-telas.jpg" alt="Prévia de todas as telas" loading="lazy"></div>
-      <div class="bd"><small>Visão geral</small><h3>Todas as telas</h3><p>As 11 telas do app lado a lado, incluindo jornada, prontuário, caderno e conexões.</p><span class="go">Abrir<svg class="i xs"><use href="#i-right"/></svg></span></div>
+      <div class="bd"><small>Visão geral</small><h3>Todas as telas</h3><p>As 14 telas do app lado a lado, incluindo jornada, caderno, notificações e privacidade.</p><span class="go">Abrir<svg class="i xs"><use href="#i-right"/></svg></span></div>
     </a>
   </section>
 
@@ -108,7 +111,7 @@
     <div><svg class="i"><use href="#i-bulb"/></svg><b>Entrega o próximo passo</b><p>O médico vê insights com a origem de cada sinal e envia o pedido em um clique.</p></div>
   </section>
 
-  <p class="proto-note foot">Protótipo de interface. Pessoas, instituição e dados clínicos são fictícios.</p>
+  <p class="proto-note foot">Protótipo da <a href="https://neurodynamics.dev" target="_blank" rel="noopener">NeuroDynamics</a> para o MIT Hacking Medicine 2026 Brasil · <a href="mailto:marcondes@neurodynamics.dev">marcondes@neurodynamics.dev</a>. Pessoas, instituição e dados clínicos são fictícios.</p>
 </div>
 </body>
 </html>

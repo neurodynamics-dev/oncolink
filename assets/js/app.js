@@ -15,22 +15,26 @@
     { k:'prontuario', n:'Prontuário',  ic:'file',     d:'O registro da rede em linguagem simples: diagnóstico, medicações com adesão e histórico.' },
     { k:'caderno',    n:'Caderno',     ic:'book',     d:'Tudo o que você contou à Lia, como hábitos, planos e família. Você escolhe o que a equipe vê.' },
     { k:'conexoes',   n:'Conexões',    ic:'link',     d:'Apple Saúde, Apple Watch, Clue, Fitbit e outros. A equipe recebe resumos, nunca dados brutos.' },
+    { k:'notificacoes', n:'Notificações', ic:'bell',  d:'Com o app salvo na tela inicial, a Lia manda notificações push. Aqui você ativa, testa e escolhe o que receber.' },
+    { k:'privacidade', n:'Privacidade', ic:'shield',  d:'LGPD: consentimentos, cópia dos dados, quem acessou e o pedido de exclusão.' },
     { k:'checkup',    n:'Checkup',     ic:'heart',    d:'O pop-up “como você está se sentindo”. Se você marcar febre, a Lia orienta a ligar para a central na hora.', ov:'inicio' },
-    { k:'agendar',    n:'Agendar',     ic:'pin',      d:'Agendar um exame atrasado escolhendo um local próximo e um horário.', ov:'exames' }
+    { k:'agendar',    n:'Agendar',     ic:'pin',      d:'Agendar um exame atrasado escolhendo um local próximo e um horário.', ov:'exames' },
+    { k:'excluir',    n:'Excluir dados', ic:'trash',  d:'O pedido de exclusão: o que apagar, o que a lei obriga a rede a guardar e o protocolo.', ov:'privacidade' }
   ];
-  const TAB_OF = { exames:'agenda', prontuario:'perfil', caderno:'perfil', conexoes:'perfil' };
+  const TAB_OF = { exames:'agenda', prontuario:'perfil', caderno:'perfil', conexoes:'perfil', notificacoes:'perfil', privacidade:'perfil' };
   let cur = 'inicio';
 
   /* ---------- navegação ---------- */
   function go(k, push=true){
     const t = TELAS.find(x => x.k === k); if (!t) return;
     if (t.ov){ go(t.ov, false); open(k); setSide(t); if (push) url(k); return; }
-    closeAll();
+    closeAll(); $('#pushb').hidden = true;
     cur = k;
+    if (k === 'notificacoes') renderPush();
     $$('.scr').forEach(s => s.classList.toggle('on', s.dataset.s === k));
     const tab = TAB_OF[k] || k;
     $$('#tabbar button').forEach(b => b.classList.toggle('on', b.dataset.tab === tab));
-    $('.status').classList.toggle('dark', k === 'perfil');
+    $('.status').classList.toggle('dark', k === 'perfil' && $('[data-s="perfil"]').scrollTop < 110);
     const s = $(`.scr[data-s="${k}"]`); if (s && k !== 'lia') s.scrollTop = 0;
     if (k === 'lia') requestAnimationFrame(() => { const c = $('#chat'); c.scrollTop = c.scrollHeight; });
     setSide(t); if (push) url(k);
@@ -46,6 +50,7 @@
     const bg = $(`.sheet-bg[data-sheet="${k}"]`); if (!bg) return;
     bg.hidden = false;
     $$('[data-step]', bg).forEach(s => s.hidden = s.dataset.step !== '1');
+    if (k === 'excluir'){ $('#exAck').checked = false; $('#exOk').disabled = true; }
   }
   function closeAll(){ $$('.sheet-bg').forEach(b => b.hidden = true); }
 
@@ -360,6 +365,116 @@
     if (b.classList.contains('speak')) { closeAll(); go('lia'); return; }
     toast(b.textContent.trim() + ' · em breve no app');
   }));
+
+  /* ---------- notificações push ---------- */
+  const solo = document.body.classList.contains('solo');
+  const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const iOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const android = /Android/.test(navigator.userAgent);
+  if (standalone() && !solo) document.body.classList.add('standalone');
+  let swReg = null, installEvt = null;
+  if ('serviceWorker' in navigator && !solo && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')){
+    navigator.serviceWorker.register('sw.js').then(r => { swReg = r; if (cur === 'notificacoes') renderPush(); }).catch(() => {});
+  }
+  addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (cur === 'notificacoes') renderPush(); });
+  addEventListener('appinstalled', () => { installEvt = null; toast('OncoLink salvo na tela inicial'); });
+
+  function pushState(){
+    const ok = 'Notification' in window && 'serviceWorker' in navigator;
+    if (!standalone()) return 'instalar';
+    if (!ok) return 'sem-suporte';
+    return Notification.permission; // default · granted · denied
+  }
+  function renderPush(){
+    const st = pushState(), card = $('#pushCard');
+    const h = (icon, cls, t, d) => `<div class="pc-h"><span class="pc-ic ${cls}">${ic(icon)}</span><div><b>${t}</b><small>${d}</small></div></div>`;
+    if (st === 'instalar'){
+      const steps = android
+        ? ['Toque no menu <b>⋮</b> do navegador', 'Escolha <b>Instalar app</b>', 'Abra o OncoLink pelo ícone e ative aqui']
+        : [`Toque em ${ic('iosshare','sm')} <b>Compartilhar</b> no Safari`, 'Escolha <b>Adicionar à Tela de Início</b>', 'Abra o OncoLink pelo ícone e ative aqui'];
+      card.innerHTML = h('mobile', '', 'Salve o OncoLink na tela inicial', 'As notificações chegam por push quando o app está salvo no celular.')
+        + `<ol class="pc-steps">${steps.map(x => `<li><span>${x}</span></li>`).join('')}</ol>`
+        + `<div class="pc-btns">${installEvt ? '<button class="btn primary sm" id="pcInstall">Instalar app</button>' : ''}<button class="btn ghost sm" id="pcDemo">${ic('bell','xs')}Ver exemplo</button></div>`;
+    } else if (st === 'default'){
+      card.innerHTML = h('bell', '', 'Ative as notificações', 'Lembretes de exames, consultas e mensagens da Lia, mesmo com o app fechado.')
+        + `<div class="pc-btns"><button class="btn primary sm" id="pcEnable">Ativar notificações</button></div>`;
+    } else if (st === 'granted'){
+      card.innerHTML = h('checkc', 'ok', 'Notificações ativas', 'Neste aparelho, com o OncoLink salvo na tela inicial.')
+        + `<div class="pc-btns"><button class="btn ghost sm" id="pcTest">${ic('send','xs')}Enviar teste</button></div>`;
+    } else if (st === 'denied'){
+      card.innerHTML = h('x', 'bad', 'Notificações bloqueadas', 'Ative em Ajustes › Notificações › OncoLink.');
+    } else {
+      card.innerHTML = h('info', '', 'Este aparelho não recebe push', 'No iPhone, é preciso iOS 16.4 ou mais recente.');
+    }
+    $('#pcInstall')?.addEventListener('click', async () => { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; renderPush(); });
+    $('#pcDemo')?.addEventListener('click', () => demoPush());
+    $('#pcEnable')?.addEventListener('click', enablePush);
+    $('#pcTest')?.addEventListener('click', () => testPush());
+  }
+  async function enablePush(){
+    const p = await Notification.requestPermission();
+    if (p === 'granted'){ await subscribe(); testPush(); }
+    renderPush();
+  }
+  function b64ToBytes(b64){
+    const pad = '='.repeat((4 - b64.length % 4) % 4), raw = atob((b64 + pad).replace(/-/g, '+').replace(/_/g, '/'));
+    return Uint8Array.from(raw, c => c.charCodeAt(0));
+  }
+  async function subscribe(){
+    const cfg = window.OL_PUSH || {};
+    if (!cfg.vapidPublicKey) return; // sem servidor configurado: notificações locais de demonstração
+    try {
+      const reg = swReg || await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription() || await reg.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:b64ToBytes(cfg.vapidPublicKey) });
+      if (cfg.endpoint) await fetch(cfg.endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(sub) });
+    } catch (e) { console.warn('push', e); }
+  }
+  async function testPush(){
+    try {
+      const reg = swReg || await navigator.serviceWorker.ready;
+      reg.active.postMessage({ tipo:'teste', atraso:3000 });
+      toast('Chega em 3 segundos. Pode bloquear a tela.');
+    } catch (e) { demoPush(); }
+  }
+  let pbT;
+  function demoPush(){
+    const b = $('#pushb'); b.hidden = true; void b.offsetWidth; b.hidden = false;
+    clearTimeout(pbT); pbT = setTimeout(() => b.hidden = true, 6000);
+  }
+  // preferências
+  const PREF = 'oncolink-prefs';
+  let prefs = {}; try { prefs = JSON.parse(localStorage.getItem(PREF) || '{}'); } catch (e) {}
+  $$('[data-pref]').forEach(i => {
+    if (i.dataset.pref in prefs) i.checked = prefs[i.dataset.pref];
+    i.addEventListener('change', () => { prefs[i.dataset.pref] = i.checked; try { localStorage.setItem(PREF, JSON.stringify(prefs)); } catch (e) {} });
+  });
+
+  /* ---------- privacidade (LGPD) ---------- */
+  $$('[data-cons]').forEach(i => i.addEventListener('change', () => {
+    const n = i.closest('li').querySelector('b').textContent;
+    toast(i.checked ? `Consentimento dado: ${n}` : `Consentimento revogado: ${n}`);
+  }));
+  $('#btnBaixar').addEventListener('click', () => {
+    const dados = {
+      gerado_em: new Date().toISOString(), aviso: 'Dados fictícios do protótipo OncoLink',
+      titular: OL.paciente, consentimentos: Object.fromEntries($$('[data-cons]').map(i => [i.dataset.cons, i.checked])),
+      jornada: OL.jornada, caderno: NB.map(g => ({ grupo:g.g, registros:g.it.map(([t, m, sh]) => ({ texto:t, origem:m, compartilhado:!!sh })) })),
+      checklist_semanal: OL.checklist
+    };
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 2)], { type:'application/json' }));
+    a.download = 'oncolink-meus-dados.json'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast('Arquivo com seus dados baixado');
+  });
+  $('#btnAcessos').addEventListener('click', () => toast('Últimos 30 dias: Dra. Beatriz Kanno, Dr. Rafael Couto e Joana Prado'));
+  $('#exAck').addEventListener('change', e => $('#exOk').disabled = !e.target.checked);
+  $('#exOk').addEventListener('click', () => {
+    $('#exProt').textContent = 'LGPD-2026-' + String(100000 + Math.floor(Math.random() * 900000));
+    $$('[data-sheet="excluir"] [data-step]').forEach(s => s.hidden = s.dataset.step !== '2');
+  });
+
+  $('[data-s="perfil"]').addEventListener('scroll', e => $('.status').classList.toggle('dark', cur === 'perfil' && e.target.scrollTop < 110), { passive:true });
 
   /* ---------- montar ---------- */
   waves(); lanesChips(); drawJourney(); week(); map(); meds(); notebook();

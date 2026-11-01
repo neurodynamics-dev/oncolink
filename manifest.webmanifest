@@ -1,0 +1,23 @@
+{
+  "name": "OncoLink",
+  "short_name": "OncoLink",
+  "description": "Acompanhamento da sua jornada de saúde, com a Lia.",
+  "lang": "pt-BR",
+  "id": "app.html",
+  "start_url": "app.html?tela=inicio",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6F7FC",
+  "theme_color": "#F6F7FC",
+  "icons": [
+    { "src": "assets/img/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/img/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Falar com a Lia", "url": "app.html?tela=lia", "icons": [{ "src": "assets/img/icone-192.png", "sizes": "192x192" }] },
+    { "name": "Checkup do dia", "url": "app.html?tela=checkup", "icons": [{ "src": "assets/img/icone-192.png", "sizes": "192x192" }] },
+    { "name": "Agenda", "url": "app.html?tela=agenda", "icons": [{ "src": "assets/img/icone-192.png", "sizes": "192x192" }] }
+  ]
+}

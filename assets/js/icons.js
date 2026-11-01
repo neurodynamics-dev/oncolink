@@ -69,7 +69,15 @@
     printer:'<path d="M7 9V3.5h10V9"/><rect x="3.5" y="9" width="17" height="7.5" rx="2"/><path d="M7 14h10v6.5H7z"/>',
     share:'<circle cx="17.5" cy="5.5" r="2.4"/><circle cx="6.5" cy="12" r="2.4"/><circle cx="17.5" cy="18.5" r="2.4"/><path d="m8.6 10.8 6.8-4M8.6 13.2l6.8 4"/>',
     trend:'<path d="m3.5 16.5 5.5-5.5 4 4 7.5-7.5"/><path d="M15 7.5h5.5V13"/>',
-    wave:'<path d="M3 12h1.5M6.5 8v8M10 5v14M13.5 9v6M17 7v10M20.5 11v2"/>'
+    wave:'<path d="M3 12h1.5M6.5 8v8M10 5v14M13.5 9v6M17 7v10M20.5 11v2"/>',
+    mail:'<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/>',
+    trash:'<path d="M4 6.5h16M9.5 6.5V4.5h5v2M6 6.5l1 13a1.5 1.5 0 0 0 1.5 1.4h7a1.5 1.5 0 0 0 1.5-1.4l1-13"/><path d="M10 11v6M14 11v6"/>',
+    download:'<path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4.5 16.5v2a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-2"/>',
+    mobile:'<rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/>',
+    iosshare:'<path d="M12 3.5v11M8 7.5l4-4 4 4"/><path d="M8.5 10.5H7A1.5 1.5 0 0 0 5.5 12v7A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5h-1.5"/>',
+    plussq:'<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8.5v7M8.5 12h7"/>',
+    scroll:'<path d="M8 4.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5a2 2 0 0 1-2 2H8"/><path d="M8 4.5a2 2 0 0 0-2 2v12a2 2 0 0 1-2-2v-1.5h4"/><path d="M10.5 9h6M10.5 12.5h6M10.5 16h3.5"/>',
+    key:'<circle cx="8" cy="15" r="4.5"/><path d="m11.2 11.8 8.3-8.3M16.5 6.5l2.5 2.5M14 9l2 2"/>'
   };
   const sym = Object.entries(P).map(([k,v])=>`<symbol id="i-${k}" viewBox="0 0 24 24">${v}</symbol>`).join('');
   const brand = `
@@ -78,8 +86,8 @@
         <linearGradient id="olg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B5BFF"/><stop offset="1" stop-color="#5A4ED4"/></linearGradient>
         <linearGradient id="olg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7A5CF5"/><stop offset="1" stop-color="#B47CFF"/></linearGradient>
       </defs>
-      <circle cx="12" cy="16" r="7.4" fill="none" stroke="url(#olg1)" stroke-width="3.2"/>
-      <circle cx="20" cy="16" r="7.4" fill="none" stroke="url(#olg2)" stroke-width="3.2" stroke-dasharray="34 12.5" stroke-dashoffset="-17" stroke-linecap="round"/>
+      <circle cx="11.8" cy="16" r="7.4" fill="none" stroke="url(#olg1)" stroke-width="3.2"/>
+      <circle cx="20.2" cy="16" r="7.4" fill="none" stroke="url(#olg2)" stroke-width="3.2" stroke-dasharray="41.66 4.83" stroke-dashoffset="13.67"/>
     </symbol>`;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">${sym}${brand}</svg>`;
   document.body.insertAdjacentHTML('afterbegin', svg);
