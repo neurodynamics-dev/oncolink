@@ -17,11 +17,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/base.css?v=5">
-<link rel="stylesheet" href="assets/css/app.css?v=5">
+<link rel="stylesheet" href="assets/css/base.css?v=7">
+<link rel="stylesheet" href="assets/css/app.css?v=7">
 </head>
 <body class="pa">
-<script src="assets/js/icons.js?v=5"></script>
+<script src="assets/js/icons.js?v=7"></script>
 
 <div class="stage">
   <!-- painel lateral (desktop) -->
@@ -554,7 +554,18 @@
             <div class="ag-step" data-step="1">
               <small class="sh-k">Agendar exame</small>
               <h2 class="serif" id="agT">Ultrassom de tireoide</h2>
-              <p class="lead">Escolha um local perto de você. Não precisa de jejum.</p>
+              <p class="lead">Não precisa de jejum.</p>
+              <div class="combo">
+                <div class="combo-h"><span class="lia-orb still" style="--s:20px"></span><b>Aproveite a ida de quarta</b></div>
+                <p>Você já vai à Unidade Paulista na quarta, 04/11, para a sessão 8. Dá para fazer o ultrassom e o ecocardiograma antes, no mesmo lugar.</p>
+                <ol class="combo-l">
+                  <li><span class="num">07:00</span><div><b>Ultrassom de tireoide</b><small>Imagem, 1º andar</small></div></li>
+                  <li><span class="num">07:30</span><div><b>Ecocardiograma</b><small>Cardiologia, 2º andar · pedido até 06/11</small></div></li>
+                  <li class="fix"><span class="num">08:00</span><div><b>Sessão 8 de 12 · Paclitaxel</b><small>Infusão, 4º andar · já marcada</small></div></li>
+                </ol>
+                <div class="combo-f"><span class="tag ok">1 ida em vez de 3</span><button class="btn lia sm" id="comboOk">Agendar os dois</button></div>
+              </div>
+              <h4>Ou escolha outro local</h4>
               <div class="locs" id="locs">
                 <label class="loc"><input type="radio" name="loc" checked><span class="loc-b"><b>Meridiano Diagnósticos · Moema</b><small><svg class="i xs"><use href="#i-pin"/></svg>3,4 km · 12 min de carro</small></span><span class="loc-n num">seg 09/11</span></label>
                 <label class="loc"><input type="radio" name="loc"><span class="loc-b"><b>Unidade Paulista</b><small><svg class="i xs"><use href="#i-pin"/></svg>2,1 km · no dia da sua sessão</small></span><span class="loc-n num">qua 04/11</span></label>
@@ -562,14 +573,13 @@
               </div>
               <h4>Horários</h4>
               <div class="times" id="times"><button>07:40</button><button class="on">08:20</button><button>09:00</button><button>10:40</button><button>14:00</button><button>16:20</button></div>
-              <p class="tip-lia"><span class="lia-orb still" style="--s:18px"></span>Na quarta você já vai à Unidade Paulista. Quer aproveitar a ida?</p>
               <button class="btn primary block lg" id="agOk">Confirmar agendamento</button>
             </div>
             <div class="ag-step done" data-step="2" hidden>
               <div class="ok-orb"><svg class="i lg"><use href="#i-calendar"/></svg></div>
               <h2 class="serif">Agendado!</h2>
               <p class="lead c" id="agMsg">Ultrassom de tireoide · seg, 09/11 · 08:20<br>Meridiano Diagnósticos · Moema</p>
-              <p class="fine c">A Lia te lembra na véspera.</p>
+              <p class="fine c" id="agFine">A Lia te lembra na véspera.</p>
               <button class="btn ghost block" data-close>Fechar</button>
             </div>
           </div>
@@ -614,8 +624,8 @@
   </div>
 </div>
 
-<script src="assets/js/push-config.js?v=5"></script>
-<script src="assets/js/data.js?v=5"></script>
-<script src="assets/js/app.js?v=5"></script>
+<script src="assets/js/push-config.js?v=7"></script>
+<script src="assets/js/data.js?v=7"></script>
+<script src="assets/js/app.js?v=7"></script>
 </body>
 </html>

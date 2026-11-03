@@ -242,6 +242,50 @@
     });
   }
 
+  /* ---------- mapa de risco (sonar) ---------- */
+  const NIVEL = {
+    alto:     { c:'var(--bad)',  tag:'bad',  t:'Alto' },
+    elevado:  { c:'var(--warn)', tag:'warn', t:'Elevado' },
+    moderado: { c:'var(--blue)', tag:'blue', t:'Moderado' },
+    baixo:    { c:'var(--dim)',  tag:'gray', t:'Baixo' }
+  };
+  function drawSonar(){
+    const R = OL.riscos, cx = 180, cy = 160, rMax = 130;
+    const ang = i => (-90 + i * 360 / R.length) * Math.PI / 180;
+    const pos = (a, r) => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+    const raio = n => rMax - n * 118;
+    const aneis = [[40, 'alto'], [70, 'elevado'], [100, 'moderado'], [130, 'baixo']];
+    const fatia = (a0, a1, r) => { const [x0, y0] = pos(a0, r), [x1, y1] = pos(a1, r); return `M${cx} ${cy}L${x0} ${y0}A${r} ${r} 0 0 1 ${x1} ${y1}Z`; };
+    const a0 = 112 * Math.PI / 180, a1 = 154 * Math.PI / 180, [lx, ly] = pos(a1, rMax), aL = -67.5 * Math.PI / 180;
+    $('#sonar').innerHTML = `<svg viewBox="0 0 360 320" role="img" aria-label="Mapa de risco por tipo de câncer, em forma de sonar">
+      <circle class="sn-zone" cx="${cx}" cy="${cy}" r="40"/>
+      ${aneis.map(([r], i) => `<circle class="sn-ring ${i ? '' : 'in'}" cx="${cx}" cy="${cy}" r="${r}"/>`).join('')}
+      ${R.map((o, i) => { const [x, y] = pos(ang(i), rMax); return `<line class="sn-spoke" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`; }).join('')}
+      <g class="sn-sweep"><path d="${fatia(a0, a1, rMax)}"/><line x1="${cx}" y1="${cy}" x2="${lx}" y2="${ly}"/></g>
+      ${aneis.map(([r, k], i) => { const [x, y] = i ? pos(aL, r - 6) : [cx, cy + 30]; return `<text class="sn-lvl" x="${i ? x + 3 : x}" y="${y + 3}"${i ? '' : ' text-anchor="middle"'}>${k}</text>`; }).join('')}
+      ${R.map((o, i) => {
+        const a = ang(i), [x, y] = pos(a, rMax + 13), c = Math.cos(a);
+        const anc = Math.abs(c) < .2 ? 'middle' : c > 0 ? 'start' : 'end';
+        return `<text class="sn-lbl" x="${x}" y="${y + 3.5}" text-anchor="${anc}">${o.t}</text>`;
+      }).join('')}
+      <circle class="sn-me" cx="${cx}" cy="${cy}" r="11"/><text class="sn-me-t" x="${cx}" y="${cy + 3.4}" text-anchor="middle">MA</text>
+      ${R.map((o, i) => {
+        const [x, y] = pos(ang(i), raio(o.n)), c = NIVEL[o.nivel].c, alto = o.nivel === 'alto';
+        return `<g class="sn-blip" data-k="${o.k}" tabindex="0">${alto ? `<circle class="halo" cx="${x}" cy="${y}" r="8" fill="${c}" opacity=".3"/>` : ''}<circle cx="${x}" cy="${y}" r="${alto ? 6 : 5}" fill="${c}" stroke="#fff" stroke-width="2"/></g>`;
+      }).join('')}
+    </svg>`;
+    const top = [...R].sort((a, b) => b.n - a.n).slice(0, 4);
+    $('#rklist').innerHTML = top.map(o => { const N = NIVEL[o.nivel];
+      return `<li data-k="${o.k}" style="--c:${N.c}"><i></i><div><b>${o.t}</b><small>${o.d}</small></div><span class="tag ${N.tag}">${N.t}</span></li>`; }).join('');
+    $$('.sn-blip').forEach(g => {
+      const o = R.find(x => x.k === g.dataset.k), li = $(`#rklist li[data-k="${o.k}"]`);
+      bindTip(g, `<b>${o.t} · ${NIVEL[o.nivel].t.toLowerCase()}</b><small>${o.d}</small>`);
+      g.addEventListener('mouseenter', () => li && li.classList.add('hl'));
+      g.addEventListener('mouseleave', () => li && li.classList.remove('hl'));
+      if (li){ li.addEventListener('mouseenter', () => g.classList.add('hl')); li.addEventListener('mouseleave', () => g.classList.remove('hl')); }
+    });
+  }
+
   /* ---------- marcadores ---------- */
   let mkSel = 'amh';
   function drawMarker(){
@@ -414,7 +458,7 @@
     jMode === 'g' ? drawJourney() : drawJourneyList();
     drawMarker();
   }
-  legend(); drawBody(); drawAll();
+  legend(); drawBody(); drawSonar(); drawAll();
   spark('#sp-passos', OL.passos, { bars:true });
   spark('#sp-sono', OL.sono, { color:'#8B6CF6' });
   spark('#sp-fc', OL.fcRepouso, { color:'#DD3F57' });

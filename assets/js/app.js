@@ -354,7 +354,13 @@
   /* ---------- agendar ---------- */
   const DIA = ['seg 09/11', 'qua 04/11', 'ter 10/11'], LOC = ['Meridiano Diagnósticos · Moema', 'Unidade Paulista', 'Unidade Vila Mariana'];
   $$('#times button').forEach(b => b.addEventListener('click', () => $$('#times button').forEach(x => x.classList.toggle('on', x === b))));
+  $('#comboOk').addEventListener('click', () => {
+    $('#agMsg').innerHTML = 'Ultrassom 07:00 e ecocardiograma 07:30 · qua, 04/11<br>Unidade Paulista, antes da sessão das 08:00';
+    $('#agFine').textContent = '1 ida em vez de 3. A Lia te lembra na véspera.';
+    $$('[data-sheet="agendar"] [data-step]').forEach(s => s.hidden = s.dataset.step !== '2');
+  });
   $('#agOk').addEventListener('click', () => {
+    $('#agFine').textContent = 'A Lia te lembra na véspera.';
     const i = $$('#locs input').findIndex(x => x.checked), h = $('#times .on')?.textContent || '08:20';
     $('#agMsg').innerHTML = `Ultrassom de tireoide · ${DIA[i]} · ${h}<br>${LOC[i]}`;
     $$('[data-sheet="agendar"] [data-step]').forEach(s => s.hidden = s.dataset.step !== '2');

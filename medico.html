@@ -11,11 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/base.css?v=5">
-<link rel="stylesheet" href="assets/css/medico.css?v=5">
+<link rel="stylesheet" href="assets/css/base.css?v=7">
+<link rel="stylesheet" href="assets/css/medico.css?v=7">
 </head>
 <body class="md">
-<script src="assets/js/icons.js?v=5"></script>
+<script src="assets/js/icons.js?v=7"></script>
 
 <aside class="rail" aria-label="Navegação principal">
   <a class="rail-logo" href="index.html" title="OncoLink"><svg class="brand-mark"><use href="#oncolink-mark"/></svg></a>
@@ -272,6 +272,17 @@
       </div>
 
       <div class="col-side">
+        <!-- mapa de risco (sonar) -->
+        <section class="card w-risk">
+          <header class="w-h">
+            <div class="w-t"><svg class="i"><use href="#i-gauge"/></svg><h3>Mapa de risco</h3><span class="w-src">por tipo de câncer</span></div>
+            <div class="w-a"><span class="tag bad num">2 altos</span></div>
+          </header>
+          <div class="sonar" id="sonar"></div>
+          <ul class="rk-list" id="rklist"></ul>
+          <p class="w-foot">Histórico familiar, exames, hábitos e o que a paciente contou à Lia, contra as diretrizes da rede.</p>
+        </section>
+
         <!-- insights -->
         <section class="card w-insights">
           <header class="w-h">
@@ -398,7 +409,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="tip" id="tip" role="tooltip"></div>
 
-<script src="assets/js/data.js?v=5"></script>
-<script src="assets/js/medico.js?v=5"></script>
+<script src="assets/js/data.js?v=7"></script>
+<script src="assets/js/medico.js?v=7"></script>
 </body>
 </html>
