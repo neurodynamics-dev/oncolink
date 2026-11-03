@@ -461,6 +461,16 @@ img.svc-ic{display:block;box-shadow:0 1px 2px rgba(19,23,51,.08)}
 .times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .times button{height:40px;border-radius:12px;border:1px solid var(--line-2);font-size:14px;font-weight:600;color:var(--ink-2)}
 .times button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.combo{border-radius:18px;padding:14px;background:var(--violet-50);border:1px solid #E7E0FD;margin:-4px 0 4px}
+.combo-h{display:flex;align-items:center;gap:8px;font-size:14px;color:#3E2A9C}
+.combo>p{font-size:12.5px;line-height:1.45;color:var(--ink-2);margin:8px 0 10px}
+.combo-l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.combo-l li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:center;padding:9px 10px;border-radius:12px;background:#fff;border:1px solid #ECE6FD}
+.combo-l li.fix{background:transparent;border-style:dashed}
+.combo-l .num{font-size:13px;font-weight:600;color:#4B2DB3}
+.combo-l b{display:block;font-size:13px;font-weight:600}
+.combo-l small{display:block;font-size:11.5px;color:var(--muted)}
+.combo-f{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
 .tip-lia{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#4B2DB3;background:var(--violet-50);border-radius:12px;padding:10px 12px;margin:16px 0 14px}
 
 .ptoast{position:absolute;left:50%;bottom:104px;z-index:45;transform:translate(-50%,10px);opacity:0;pointer-events:none;white-space:nowrap;

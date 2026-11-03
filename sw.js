@@ -1,5 +1,5 @@
 /* OncoLink · service worker: app offline e notificações push */
-const V = '6'; // mesma versão do ?v= nas páginas
+const V = '7'; // mesma versão do ?v= nas páginas
 const CACHE = 'oncolink-v' + V;
 const BASE = [
   './', 'index.html', 'app.html', 'manifest.webmanifest', 'favicon.ico',
