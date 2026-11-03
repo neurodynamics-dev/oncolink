@@ -106,6 +106,19 @@ window.OL = {
   sono:      [6.9,7.1,6.4,6.8,6.2,5.9,6.6,6.3,6.0,6.5,6.1,5.8,6.4,6.2],
   passos:    [8120,7340,6980,5210,4120,6890,7650,7100,6420,4980,3870,6120,6980,6240],
 
+  /* mapa de risco por tipo de câncer (sonar). n de 0 a 1: quanto maior, mais perto do centro.
+     Cruza histórico familiar, exames, hábitos e o que a paciente contou à Lia com as diretrizes da rede. */
+  riscos: [
+    { k:'endo',   t:'Endométrio',    n:.64, nivel:'elevado',  d:'Mãe com CA de endométrio aos 52 · investigar síndrome de Lynch' },
+    { k:'ovario', t:'Ovário',        n:.78, nivel:'alto',     d:'Avó materna com CA de ovário aos 61 · critérios para BRCA1/2' },
+    { k:'pele',   t:'Pele',          n:.14, nivel:'baixo',    d:'Sem fatores relevantes registrados' },
+    { k:'colo',   t:'Colorretal',    n:.50, nivel:'moderado', d:'Suspeita de Lynch pelo histórico familiar' },
+    { k:'utero',  t:'Colo do útero', n:.38, nivel:'moderado', d:'Papanicolau atrasado há 2 meses pelo padrão da rede' },
+    { k:'tireo',  t:'Tireoide',      n:.42, nivel:'moderado', d:'Nódulo TI-RADS 3 · ultrassom anual atrasado, sem responsável' },
+    { k:'pulm',   t:'Pulmão',        n:.24, nivel:'baixo',    d:'Ex-tabagista, 8 maços-ano · abaixo do critério de rastreio' },
+    { k:'mama',   t:'Mama',          n:.86, nivel:'alto',     d:'Contralateral · CDI à esquerda aos 38, painel germinativo a solicitar' }
+  ],
+
   /* checklist semanal de bem-estar (1 = ruim, 5 = ótimo) */
   checklist: {
     semanas: ['22/09','29/09','06/10','13/10','20/10','27/10'],
